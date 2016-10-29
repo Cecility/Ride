@@ -1,0 +1,296 @@
+video{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%);
+  transition: 1s opacity;
+}
+
+.login-container{
+    top: 30%;
+    width: 90%;
+    position: absolute;
+    margin-left: 3em;
+    display: flex;
+}
+
+#sign-in-button{
+    background: white;
+    color: black;
+    font-size: 18px;
+    margin-top: 2em;
+    padding: 15px 32px;
+    font-family: "Open Sans";
+    border: none;
+}
+
+#partition{
+    margin-right:4em;
+    margin-left:4em;
+    width: 5px;
+    background: white;
+}
+.login-container-left{
+    width: 100%;
+    text-align: center;
+}
+
+.login-container-right{
+    text-align: center;
+    width: 100%;
+    color: white;
+    font-family: "Open Sans";
+}
+
+form{
+    width: 100%;  
+    color: white;
+    font-family: "Open Sans";
+    font-size: 1.5em;
+}
+
+#txtusername{
+    width: 10em;;
+    margin: .5em;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    
+}
+#txtpassword{
+    width: 10em;;
+    margin: .5em;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+}
+
+#loginbtn{
+    margin-top: .5em;
+    background: transparent;
+    border: 1px solid white;
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
+.logo{
+    width: 100%;
+    color: white;
+    font-size: 5em;
+    font-family: "Pacifico"
+}
+
+
+
+
+
+
+
+/* color of bar doesnt show before it's hovered */
+
+.clearfix:after{
+    display:block;
+    clear:both;
+}
+
+.menu-wrap{
+    width: 100%;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    background: #3e3436;
+}
+
+.menu{
+    width: 1000px;
+    margin: 0px auto;
+}
+
+.menu li{
+    margin: 0px;
+    list-style: none;
+    font-family: "Open Sans";
+}
+
+.menu a{
+    transition: all linear 0.15s;
+    color: #919191;
+}
+
+.menu li:hover > a, .menu .current-item > a{
+    text-decoration: none;
+    color: #be5b70;
+}
+
+.menu .arrow{
+    font-size: 11px;
+    line-height: 0%
+}
+
+
+
+
+
+/* top level */
+.menu > ul > li{
+    float: left;
+    display: inline-block;
+    position: relative;
+    font-size: 19px;
+}
+
+.menu > ul > li > a{
+    padding: 10px 40px;
+    display: inline-block;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4);
+}
+
+.menu > ul > li:hover > a, .menu > ul > .current-item > a{
+    background: #2e2728;
+}
+
+
+
+
+
+/* bottom level */
+.sub-menu{
+    width: 160%;
+    padding: 5px 0px;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity linear 0.15s;
+    background: #2e2728;
+}
+
+.menu li:hover .sub-menu {
+    z-index:1;
+    opacity:1;
+}
+
+.sub-menu li {
+    display:block;
+    font-size:16px;
+}
+ 
+.sub-menu li a {
+    padding:10px 30px;
+    display:block;
+}
+ 
+.sub-menu li a:hover, .sub-menu .current-item a {
+    background:#3e3436;
+}
+
+
+
+
+
+
+
+
+.dropdown dd, .dropdown dt{
+    margin: 0px;
+    padding: 0px;
+    color: #000000;
+}
+
+.dropdown ul{
+    margin: -1px 0 0 0;
+}
+
+.dropdown dd{
+    position: relative;
+}
+
+.dropdown a, .dropdown a:visited{
+    text-decoration: none;
+    outline: none;
+    font-size: 12px;
+}
+
+.dropdown dt a{
+    display: block;
+    padding: 8px 20px 5px 10px;
+    min-height: 25px;
+    line-height: 24px;
+    overflow: hidden;
+    border: 0;
+    width: 272px;
+}
+
+.dropdown dt a span, .multiSel span{
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 3px 2px 0;
+}
+
+.dropdown dd ul{
+    border: 0;
+    display: none;
+    left: 0px;
+    padding: 2px 15px 2px 5px;
+    position: absolute;
+    top: 2px;
+    width: 280px;
+    list-style: none;
+    height: 100px;
+    overflow: auto;
+}
+
+.dropdown span.value{
+    display: none;
+}
+
+.dropdown dd ul li a{
+    padding: 5px;
+    display: block;
+}
+
+
+
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}

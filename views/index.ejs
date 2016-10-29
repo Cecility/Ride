@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="../public/stylesheets/style.css">
+    
+    <!-- Importing Google Fonts -->
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pacifico" />
+</head>
+
+<body>
+    <!-- Video Background -->
+     <video id="bgvid" autoplay muted controls loop>
+        <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
+        <source src="media/tron.mp4" type="video/mp4">
+         <source src="media/tron.webm" type="video/webm">
+    </video>
+    
+    <div class="login-container">
+        <div class="login-container-left">
+            <div class="logo">
+                Ride
+            </div>
+            <button id='sign-in-button'>Google Sign in</button>
+        
+        </div>
+        
+        <div id="partition"></div>
+        
+        <div class="login-container-right">
+            <h1>Cheaper than Uber!</h1>
+            <h1>Join a bus riding community.</h1>
+            <h1>More riding. Less waiting.</h1>
+        </div>
+    </div>
+    
+    
+
+</body>
+        <!-- JQuery -->
+    <script   src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
+        <!-- Firebase configuration -->
+    <script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
+    
+    
+    <script>
+        $(document).ready(function(){
+            var username, useremail, picUrl, domain, userRef;
+            var login_btn = document.getElementById("sign-in-button");
+            
+            
+            
+            $("#sign-in-button").on("click", function(){
+                var provider = new firebase.auth.GoogleAuthProvider();
+                provider.setCustomParameters({
+                    'prompt' : 'select_account'
+                });
+                firebase.auth().signInWithPopup(provider);
+            });
+            
+            firebase.auth().onAuthStateChanged(function(currentUser){
+                if(currentUser != null){
+                // The signed-in user info.
+                username = currentUser.displayName;
+                console.log("User name is " + currentUser.displayName);
+                useremail = currentUser.email;
+                if(currentUser.photoUrl != undefined)   
+                    picUrl  = currentUser.photoUrl;
+                else 
+                    picUrl = "null";
+                domain = useremail.substring(0,useremail.lastIndexOf("@"));
+                console.log("user mail is " + useremail);
+                console.log("userpicUrl is " + picUrl);
+                console.log("domain is " + domain);
+                firebase.database().ref("users").once('value', function(snapshot){
+                  if(!snapshot.hasChild(domain)){
+                      firebase.database().ref("users/" + domain).set({
+                          name: username,
+                          email:useremail,
+                          profile_picture: picUrl
+                      });
+                      console.log("user created");
+                      window.location.href = "viewRide.html";
+                  }
+                  else{
+                      console.log("user exists");
+                      window.location.href = "viewRide.html";
+                  }
+              });
+                }
+        });
+        });
+    </script>
+
+
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCkkZLilGWMKEobaGnn5wq6eeiWsV4julU",
+        authDomain: "ride-175f3.firebaseapp.com",
+        databaseURL: "https://ride-175f3.firebaseio.com",
+        storageBucket: "ride-175f3.appspot.com",
+        messagingSenderId: "344088152572"
+      };
+      firebase.initializeApp(config);
+    </script>
+    
+</html>

@@ -1,0 +1,13 @@
+body{
+    background: transparent;
+}
+
+.addRoute-container{
+    width:80%;
+    height:90%;
+    top:5%;
+    left:10%;
+    position:absolute;
+    background-color: gray;
+
+}
