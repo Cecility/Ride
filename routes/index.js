@@ -7,11 +7,8 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET home page. */
-router.get('/data', function(req, res, next) {
-	var fs = require('fs');
-	var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
-	console.log(data)
-	res.render('friends', { listofdata: data });
+router.get('/main', function(req, res, next) {
+	res.render('main');
 });
 
 
