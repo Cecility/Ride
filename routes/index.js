@@ -3,12 +3,15 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	res.render('index', { title1: 'Calvin' });
+	res.render('index');
 });
 
 /* GET home page. */
 router.get('/main', function(req, res, next) {
-	res.render('main');
+	var fs = require('fs');
+	var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+	console.log(data)
+	res.render('main', { listofdata: data });
 });
 
 
