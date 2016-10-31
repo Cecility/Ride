@@ -14,6 +14,11 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" />
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pacifico" />
 
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
 </head>
 
 
@@ -50,13 +55,13 @@
 				<div class="profile-usermenu">
 					<ul class="nav">
 						<li class="active">
-							<a href="main"><i class="glyphicon glyphicon-user"></i>My Groups</a>
+							<a href="main"><span class="glyphicon glyphicon-user"></span>My Groups</a>
 						</li>
 						<li>
-							<a href="discovery"><i class="glyphicon glyphicon-globe"></i>Discovery</a>
+							<a href="discovery"><span class="glyphicon glyphicon-globe"></span>Discovery</a>
 						</li>
 						<li>
-							<a href="settings"><i class="glyphicon glyphicon-cog"></i>Settings</a>
+							<a href="settings"><span class="glyphicon glyphicon-cog"></i>Settings</a>
 						</li>
 					</ul>
 				</div>
@@ -69,6 +74,29 @@
 		<div class="col-md-9">
             <div class="profile-content">
 			   <p>main page</p>
+
+
+
+  				<div data-role="main" class="ui-content">
+    				<a href="#myPopup" data-rel="popup"><span class="glyphicon glyphicon-plus-sign"></span></a>
+
+    				<div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;">
+      					<form method="post" action="demoform.asp">
+        					<div>
+          						<h3>Drive</h3>
+          						<label for="pickup" class="ui-hidden-accessible">PickUp:</label>
+						        <input type="search" name="pick" id="pickup" placeholder="Pick Up">
+						        <label for="dropoff" class="ui-hidden-accessible">DropOff:</label>
+						        <input type="search" name="drop" id="dropoff" placeholder="Drop Off">
+						        <label for="numseat" class="ui-hidden-accessible">Seats:</label>
+						        <input type="number" name="seat" id="numseat" placeholder="Seats">
+						        <input type="submit" data-inline="true" value="Create Group">
+					        </div>
+					     </form>
+					</div>
+				</div>
+
+
             </div>
 		</div>
 
