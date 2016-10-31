@@ -28,7 +28,7 @@ router.get('/settings', function(req, res, next) {
 	var fs = require('fs');
 	var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
 	console.log(data)
-	res.render('settinhs', { userprofile: data });
+	res.render('settings', { userprofile: data });
 });
 
 
