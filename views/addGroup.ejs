@@ -58,6 +58,7 @@
                         myloc.setPosition(pos);
                         myloc.setContent(browserHasGeolocation ?'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
                       }
+        google.maps.event.addDomListener(window, 'load', initialize);
                 </script>
                 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm_HyYv53RLUIrqJICXV736xFbliLqSVA&callback=initMap"></script>
     </head>
