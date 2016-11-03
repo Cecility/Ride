@@ -1,71 +1,25 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<head>
+<script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm_HyYv53RLUIrqJICXV736xFbliLqSVA&callback=initMap">
+</script>
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script>
+function initialize() {
+  var mapProp = {
+    center:new google.maps.LatLng(51.508742,-0.120850),
+    zoom:5,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</head>
 
-    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/sidebar.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/popup.css">
-    
-    <!-- Importing Google Fonts -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
-    
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Pacifico" />
+<body>
+<div id="googleMap" style="width:500px;height:380px;"></div>
 
-
-    <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-        
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm_HyYv53RLUIrqJICXV736xFbliLqSVA&callback=initMap"></script>
-    <script>
-                  // Note: This example requires that you consent to location sharing when
-                  // prompted by your browser. If you see the error "The Geolocation service
-                  // failed.", it means you probably did not give permission for the browser to
-                  // locate you.
-                      function initMap() {
-                        var map = new google.maps.Map(document.getElementById('map'), {
-                          center: {lat: 32.878731, lng: -117.230394},
-                          zoom: 6
-                        });
-                        var myloc = new google.maps.Marker({
-                            clickable: false, icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',new google.maps.Size(22,22), new google.maps.Point(0,18), new google.maps.Point(11,11)), shadow: null, zIndex: 999, map: map// your google.maps.Map object
-                        });
-                        // Try HTML5 geolocation.
-                        if (navigator.geolocation) {
-                          navigator.geolocation.getCurrentPosition(function(position) {
-                            var pos = {
-                              lat: position.coords.latitude,
-                              lng: position.coords.longitude
-                            };
-                            myloc.setPosition(pos);
-                            map.setCenter(pos);
-                            map.setZoom(13);
-                          }, function() {
-                            handleLocationError(true, myloc, map.getCenter());
-                          });
-                        } else {
-                          // Browser doesn't support Geolocation
-                          handleLocationError(false, myloc, map.getCenter());
-                        }
-                      }
-                    google.maps.event.addDomListener(window, 'load', initialize);
-                      function handleLocationError(browserHasGeolocation, myloc, pos) {
-                        myloc.setPosition(pos);
-                        myloc.setContent(browserHasGeolocation ?'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
-                      }
-                </script>
-    </head>
-    
-    <body>
-        <div class="addRoute-container" id="myPopup">
-            <div id="map">
-                </div>
-            </div>
-        </body>
-    </html>
+</body>
+</html>
