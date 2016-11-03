@@ -1,8 +1,63 @@
-[
   {
+    "users": [
+      {
+        "username": "Hansol You",
+        "pic": "https://66.media.tumblr.com/fc905022d6e97c232db3c764b21851a5/tumblr_o2v67e8gut1rr9hsgo1_r2_500.png",
+        "email": "h5you@ucsd.edu"
+      },
+      {
+        "username": "Michael Zhong",
+        "pic": "http://images.fineartamerica.com/images/artworkimages/mediumlarge/1/mitze-maine-coon-cat-vicky-path.jpg",
+        "email": "m2zhong@ucsd.edu"
+      },
+      {
+        "username": "Leanne Sturman",
+        "pic": "https://ih1.redbubble.net/image.13322831.6235/flat,220x200,075,t.u3.jpg",
+        "email": "lsturman@ucsd.edu"
+      }
+    ],
 
-    "username": "Han",
-    "pic": "https://66.media.tumblr.com/fc905022d6e97c232db3c764b21851a5/tumblr_o2v67e8gut1rr9hsgo1_r2_500.png",
-    "email": "h5you@ucsd.edu"
+  "rides": [
+      {
+        "username": "Hansol You",
+        "email": "h5you@ucsd.edu",
+        "driveid": "1234",
+        "time": "13:00",
+        "dates": [0, 1, 0, 1, 0, 1, 0],
+        "pickup": [0.123, 0.123],
+        "dropoff": [1.123, 1.123]
+      },
+      {
+        "username": "Michael Zhong",
+        "email": "m2zhong@ucsd.edu",
+        "driveid": "1234",
+        "time": "13.00",
+        "dates": [0, 1, 0, 1, 0, 1, 0],
+        "pickup": [0.123, 0.123],
+        "dropoff": [1.123, 1.123]
+      }
+    ],
+  
+  "drives":[
+      {
+        "username": "Leanne Sturman",
+        "email": "lsturman@ucsd.edu",
+        "driveid": "1234",
+        "seats": "2",
+        "time": "13:00",
+        "dates": [0, 1, 0, 1, 0, 1, 0],
+        "pickup": [0.123, 0.123],
+        "dropoff": [1.123, 1.123]
+      },
+      {
+        "username": "Sir Winston",
+        "email": "swinston@ucsd.edu",
+        "driveid": "0420",
+        "seats": "4",
+        "time": "17:00",
+        "dates": [0, 0, 1, 0, 1, 0, 0],
+        "pickup": [1.123, 1.123],
+        "dropoff": [0.123, 0.123]
+      }
+    ]
   }
-]
