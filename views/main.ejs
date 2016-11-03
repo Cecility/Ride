@@ -77,22 +77,41 @@
 		<div class="col-md-9">
             <div class="profile-content">
 			   <p>main page</p>
-    				<a href="#myPopup" data-rel="popup"><span class="glyphicon glyphicon-plus-sign" target="#myPopup"></span></a>
+    				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">+</button>
 
-    				<div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;">
-      					<form method="post" action="demoform.asp">
-        					<div>
-          						<h3>Drive</h3>
-          						<label for="pickup" class="ui-hidden-accessible">PickUp:</label>
-						        <input type="search" name="pick" id="pickup" placeholder="Pick Up">
-						        <label for="dropoff" class="ui-hidden-accessible">DropOff:</label>
-						        <input type="search" name="drop" id="dropoff" placeholder="Drop Off">
-						        <label for="numseat" class="ui-hidden-accessible">Seats:</label>
-						        <input type="number" name="seat" id="numseat" placeholder="Seats">
-						        <input type="submit" data-inline="true" value="Create Group">
-					        </div>
-					     </form>
-					</div>
+                <!-- Modal -->
+    				<div id="myModal" class="modal fade" style="min-width:250px;" role="dialog">
+                        <div class="modal-dialog">
+                            
+                            <!-- Modal Content -->
+                            <div class="modal-content">
+                                
+                                <!-- Modal Header -->
+                                <div class="mdao-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                </div>
+                                
+                                <div class="modal-body">
+                                <form method="post" action="demoform.asp">
+                                    <div>
+                                        <h3>Drive</h3>
+                                        <label for="pickup" class="ui-hidden-accessible">PickUp:</label>
+                                        <input type="search" name="pick" id="pickup" placeholder="Pick Up">
+                                        <label for="dropoff" class="ui-hidden-accessible">DropOff:</label>
+                                        <input type="search" name="drop" id="dropoff" placeholder="Drop Off">
+                                        <label for="numseat" class="ui-hidden-accessible">Seats:</label>
+                                        <input type="number" name="seat" id="numseat" placeholder="Seats">
+                                        <input type="submit" data-inline="true" value="Create Group">
+                                    </div>
+                                </form>
+                                </div>
+                                
+                                <div class="modal-footer" style="text-align: center;">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
             </div>
 		</div>
 	</div>
