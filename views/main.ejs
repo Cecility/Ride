@@ -78,49 +78,7 @@
 		<div class="col-md-9">
             <div class="profile-content">
 			   <p>main page</p>
-                    <a href="#myPopup" id="addBtn"data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ">+</a>
-
-                      <div class="addRoute-container" id="myPopup">
-                            <div id="map">
-                                <script>
-                                  // Note: This example requires that you consent to location sharing when
-                                  // prompted by your browser. If you see the error "The Geolocation service
-                                  // failed.", it means you probably did not give permission for the browser to
-                                  // locate you.
-                                      function initMap() {
-                                        var map = new google.maps.Map(document.getElementById('map'), {
-                                          center: {lat: 32.878731, lng: -117.230394},
-                                          zoom: 6
-                                        });
-                                        var myloc = new google.maps.Marker({
-                                            clickable: false, icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',new google.maps.Size(22,22), new google.maps.Point(0,18), new google.maps.Point(11,11)), shadow: null, zIndex: 999, map: map// your google.maps.Map object
-                                        });
-                                        // Try HTML5 geolocation.
-                                        if (navigator.geolocation) {
-                                          navigator.geolocation.getCurrentPosition(function(position) {
-                                            var pos = {
-                                              lat: position.coords.latitude,
-                                              lng: position.coords.longitude
-                                            };
-                                            myloc.setPosition(pos);
-                                            map.setCenter(pos);
-                                            map.setZoom(13);
-                                          }, function() {
-                                            handleLocationError(true, myloc, map.getCenter());
-                                          });
-                                        } else {
-                                          // Browser doesn't support Geolocation
-                                          handleLocationError(false, myloc, map.getCenter());
-                                        }
-                                      }
-                                      function handleLocationError(browserHasGeolocation, myloc, pos) {
-                                        myloc.setPosition(pos);
-                                        myloc.setContent(browserHasGeolocation ?'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
-                                      }
-                                </script>
-                                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm_HyYv53RLUIrqJICXV736xFbliLqSVA&callback=initMap"></script>
-                            </div>
-                        </div>
+                    <a href="#myPopup" id="addBtn" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ">+</a>
             </div>
 		</div>
 	</div>

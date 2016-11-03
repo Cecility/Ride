@@ -6,6 +6,11 @@ router.get('/', function(req, res, next) {
 	res.render('index');
 });
 
+/* GET login page. */
+router.get('/addGroup', function(req, res, next) {
+	res.render('addGroup');
+});
+
 /* GET home / main / groups page. */
 router.get('/main', function(req, res, next) {
 	var fs = require('fs');
