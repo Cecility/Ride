@@ -14,6 +14,11 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" />
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pacifico" />
 
+    <!-- Latest compiled JQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.js"
+    integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+    crossorigin="anonymous"></script>
+
 </head>
 
 
@@ -123,17 +128,56 @@
 			   
             </div>
 		</div>
-
-
+        
+        <!-- Floating input field for user to join ride group-->
+        <div class="follow-scroll" id="follow-scroll">
+            <label>
+                <input type="id" placeholder="Join group - Driver ID" name="driverid-input">
+            </label>
+            
+            <label>
+                <button type="button" class="btn btn-success">+</button>
+            </label>
+        </div>
+        
+        
 	</div>
 </div>
 
-
-
-
-
 </body>
+    
+    <script>
+    window.onload = function() {
 
+  function getScrollTop() {
+    if (typeof window.pageYOffset !== 'undefined' ) {
+      // Most browsers
+      return window.pageYOffset;
+    }
 
+    var d = document.documentElement;
+    if (d.clientHeight) {
+      // IE in standards mode
+      return d.scrollTop;
+    }
+
+    // IE in quirks mode
+    return document.body.scrollTop;
+  }
+
+  window.onscroll = function() {
+    var box = document.getElementById('follow-scroll'),
+        scroll = getScrollTop();
+
+    if (scroll <= 28) {
+      box.style.bottom = "30px";
+    }
+    else {
+      box.style.bottom = (-scroll + 50) + "px";
+    }
+  };
+
+};
+    </script>
 
 </html>
