@@ -131,6 +131,16 @@
         "dates": [0, 1, 0, 1, 0, 0, 0],
         "pickup": "La Regencia",
         "dropoff": "ERC"
+      },
+      {
+        "username": "Phil Corgson",
+        "email": "pcorgson@ucsd.edu",
+        "driveid": "0302",
+        "seats": "3",
+        "time": "12:00",
+        "dates": [0, 1, 0, 1, 0, 0, 0],
+        "pickup": "Muir College",
+        "dropoff": "Costa Verde"
       }
     ]
   }

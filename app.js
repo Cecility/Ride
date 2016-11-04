@@ -14,6 +14,7 @@ var settings = require('./routes/settings');
 var addGroup = require('./routes/addGroup');
 
 var discoveryA = require('./routes/discoveryA');
+var mainA = require('./routes/mainA');
 
 var app = express();
 
@@ -36,6 +37,8 @@ app.get('/discovery', discovery.view);
 app.get('/settings', settings.view);
 app.get('/addGroup', addGroup.view);
 app.get('/discoveryA', mainAdd.view);
+app.get('/mainA', mainA.view);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
