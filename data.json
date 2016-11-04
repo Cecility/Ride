@@ -19,6 +19,36 @@
         "username": "Sir Winston",
         "pic": "http://orig14.deviantart.net/0691/f/2016/060/8/c/jyushimatsu_dog_by_b_creation-d9tj8sn.jpg",
         "email": "swinston@ucsd.edu"
+      },
+      {
+        "username": "Captain Americorg",
+        "pic": "https://66.media.tumblr.com/2b82e4b7548be7671fb1e3debb013336/tumblr_nokoh2Y7ph1s8vuz4o1_500.jpg",
+        "email": "camericorg@ucsd.edu"
+      },
+      {
+        "username":"Thorgi",
+        "pic": "http://t01.deviantart.net/cqr25ppk7v0G_HImjejZyE2YYqE=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre03/f520/th/pre/f/2015/131/c/f/thorgi_by_the_karl-d8t2bk9.jpg",
+        "email":"thorgi@ucsd.edu"
+      },
+      {
+        "username":"Natasha Corginoff",
+        "pic": "http://orig02.deviantart.net/f564/f/2015/131/2/4/natasha_corginoff_by_the_karl-d8t2bwf.jpg",
+        "email":"ncorginoff@ucsd.edu"
+      },
+      {
+        "username":"Phil Corgson",
+        "pic": "https://65.media.tumblr.com/4ad0aa47fe1ecf6784fe148b8d77ec6f/tumblr_o587dzkiMz1s8vuz4o1_500.jpg",
+        "email": "pcorgson@ucsd.edu"
+      },
+      {
+        "username":"Iron Corg",
+        "pic": "https://67.media.tumblr.com/c8194e80bfb156f11527963e0039a962/tumblr_nob2hzox6n1s8vuz4o1_500.jpg",
+        "email": "icorg@ucsd.edu"
+      },
+      {
+        "username":"Falcorg",
+        "pic": "https://66.media.tumblr.com/1777209acf4e8aac1acb08dc90a4088a/tumblr_o54cag5FYx1s8vuz4o1_r1_500.jpg",
+        "email": "falcorg@ucsd.edu"
       }
     ],
 
@@ -26,20 +56,28 @@
       {
         "username": "Hansol You",
         "email": "h5you@ucsd.edu",
-        "driveid": "1234",
-        "time": "13:00",
-        "dates": [0, 1, 0, 1, 0, 1, 0],
-        "pickup": "Costa Verde",
-        "dropoff": "Muir College"
+        "driveid": "1234"
       },
       {
         "username": "Michael Zhong",
         "email": "m2zhong@ucsd.edu",
         "driveid": "1234",
-        "time": "13.00",
-        "dates": [0, 1, 0, 1, 0, 1, 0],
-        "pickup": "Costa Verde",
-        "dropoff": "Muir College"
+        "time": "13.00"
+      },
+      {
+        "username": "Hansol You",
+        "email": "h5you@ucsd.edu",
+        "driveid": "0204"
+      },
+      {
+        "username": "Hansol You",
+        "email": "h5you@ucsd.edu",
+        "driveid": "0102"
+      },
+      {
+        "username": "Falcorg",
+        "email": "falcorg@ucsd.edu",
+        "driveid": "0103"
       }
     ],
   
@@ -50,7 +88,7 @@
         "driveid": "1234",
         "seats": "2",
         "time": "13:00",
-        "dates": [0, 1, 0, 1, 0, 1, 0],
+        "dates": [1, 0, 1, 0, 1, 0, 0],
         "pickup": "Costa Verde",
         "dropoff": "Muir College"
       },
@@ -60,9 +98,39 @@
         "driveid": "0420",
         "seats": "4",
         "time": "17:00",
-        "dates": [0, 0, 1, 0, 1, 0, 0],
+        "dates": [0, 1, 0, 1, 0, 0, 0],
         "pickup": "UTC",
         "dropoff": "Warren College"
+      },
+      {
+        "username": "Captain Americorg",
+        "email": "camericorg@ucsd.edu",
+        "driveid": "0204",
+        "seats": "4",
+        "time": "12:00",
+        "dates": [0, 1, 0, 1, 0, 0, 0],
+        "pickup": "UTC",
+        "dropoff": "Warren College"
+      },
+      {
+        "username": "Iron Corg",
+        "email": "icorg@ucsd.edu",
+        "driveid": "0102",
+        "seats": "2",
+        "time": "11:00",
+        "dates": [0, 0, 1, 0, 1, 0, 0],
+        "pickup": "La Regencia",
+        "dropoff": "ERC"
+      },
+      {
+        "username": "Thorgi",
+        "email": "thorgi@ucsd.edu",
+        "driveid": "0103",
+        "seats": "2",
+        "time": "11:00",
+        "dates": [0, 1, 0, 1, 0, 0, 0],
+        "pickup": "La Regencia",
+        "dropoff": "ERC"
       }
     ]
   }
