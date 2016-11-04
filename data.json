@@ -14,6 +14,11 @@
         "username": "Leanne Sturman",
         "pic": "https://ih1.redbubble.net/image.13322831.6235/flat,220x200,075,t.u3.jpg",
         "email": "lsturman@ucsd.edu"
+      },
+      {
+        "username": "Sir Winston",
+        "pic": "http://orig14.deviantart.net/0691/f/2016/060/8/c/jyushimatsu_dog_by_b_creation-d9tj8sn.jpg",
+        "email": "swinston@ucsd.edu"
       }
     ],
 
@@ -24,8 +29,8 @@
         "driveid": "1234",
         "time": "13:00",
         "dates": [0, 1, 0, 1, 0, 1, 0],
-        "pickup": [0.123, 0.123],
-        "dropoff": [1.123, 1.123]
+        "pickup": "Costa Verde",
+        "dropoff": "Muir College"
       },
       {
         "username": "Michael Zhong",
@@ -33,8 +38,8 @@
         "driveid": "1234",
         "time": "13.00",
         "dates": [0, 1, 0, 1, 0, 1, 0],
-        "pickup": [0.123, 0.123],
-        "dropoff": [1.123, 1.123]
+        "pickup": "Costa Verde",
+        "dropoff": "Muir College"
       }
     ],
   
@@ -46,8 +51,8 @@
         "seats": "2",
         "time": "13:00",
         "dates": [0, 1, 0, 1, 0, 1, 0],
-        "pickup": [0.123, 0.123],
-        "dropoff": [1.123, 1.123]
+        "pickup": "Costa Verde",
+        "dropoff": "Muir College"
       },
       {
         "username": "Sir Winston",
@@ -56,8 +61,8 @@
         "seats": "4",
         "time": "17:00",
         "dates": [0, 0, 1, 0, 1, 0, 0],
-        "pickup": [1.123, 1.123],
-        "dropoff": [0.123, 0.123]
+        "pickup": "UTC",
+        "dropoff": "Warren College"
       }
     ]
   }
