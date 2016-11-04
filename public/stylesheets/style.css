@@ -191,7 +191,12 @@ form{
 
 
 
-
+.follow-scroll{
+  position: absolute;
+  width: 90%;
+  height: 1.25em;
+  text-align: right;
+}
 
 
 
@@ -252,10 +257,6 @@ form{
     padding: 5px;
     display: block;
 }
-
-
-
-
 
 /* The Modal (background) */
 .modal {
