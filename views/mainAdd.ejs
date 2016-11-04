@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/popup.css">
+    
+    <!-- Importing Google Fonts -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+    
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Pacifico" />
+
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    
+</head>
+
+
+
+
+<!-- THIS IS ALSO THE MY GROUPS PAGE! -->
+
+<body>
+<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+					<img src="<%= userprofile.users[0].pic %>" class="img-responsive">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						<%= userprofile.users[0].username %>
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-danger btn-sm">Logout</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav">
+						<li class="active">
+							<a href="main"><span class="glyphicon glyphicon-user"></span>My Groups</a>
+						</li>
+						<li>
+							<a href="discovery"><span class="glyphicon glyphicon-globe"></span>Discovery</a>
+						</li>
+						<li>
+							<a href="settings"><span class="glyphicon glyphicon-cog"></span>Settings</a>
+						</li>
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+
+
+
+
+		<!-- MAIN CONTENT -->
+		<div class="col-md-9">
+            <div class="profile-content">
+            	<h1 align="center"> These are your rides! </h1>
+            		<h3 align="center"><a class="btn" href="addGroup" style="background-color:powderblue;">Wanna drive?</a></h3>
+            	<!-- go through the whole ride database
+            		if user's id == id of a rider...-->
+	            <% for(var h = 0; h < userprofile.rides.length; h++ ){ 
+    	        	if(userprofile.users[0].email == userprofile.rides[h].email){
+				
+						for(var i = 0; i < userprofile.drives.length; i++ ){ 
+							if(userprofile.rides[h].driveid == userprofile.drives[i].driveid) {%>
+								<!-- getting driver's pic -->
+								<div class="profile-userpic">
+									<% for(var k = 0; k < userprofile.users.length; k++){
+										if(userprofile.drives[i].email == userprofile.users[k].email){ %>		
+											<img src="<%= userprofile.users[k].pic %>" class="img-responsive">	
+									<% }} %>
+								</div>
+
+
+
+
+							<div class="profile-usertitle">
+								<div class="profile-usertitle-name">
+									<%= userprofile.drives[i].username %>
+								</div>
+							</div>
+        	       			
+        	       			<li> Leaving at: <%= userprofile.drives[i].time %> </li>
+        	       			<li> Pick Up: <%= userprofile.drives[i].pickup %> </li>
+		        	       	<li> Drop Off: <%= userprofile.drives[i].dropoff %> </li>
+
+        			     	<li> Rides on: 
+        	    		    	<% if(userprofile.drives[i].dates[0] == 1){ %>
+		        	        		Mon, 
+        			        	<% } %>
+
+        	    		    	<% if(userprofile.drives[i].dates[1] == 1){ %>
+        	        				Tue, 
+		        	        	<% } %>
+
+        			        	<% if(userprofile.drives[i].dates[2] == 1){ %>
+        	    		    		Wed, 
+        	        			<% } %>
+
+		        	        	<% if(userprofile.drives[i].dates[3] == 1){ %>
+        			        		Thu, 
+        	    		    	<% } %>
+
+        	        			<% if(userprofile.drives[i].dates[4] == 1){ %>
+        	        				Fri, 
+ 			       	        	<% } %>
+
+        			        	<% if(userprofile.drives[i].dates[5] == 1){ %>
+        	        				Sat, 
+        	        			<% } %>
+
+		        	        	<% if(userprofile.drives[i].dates[6] == 1){ %>
+        			        		Sun
+        	    		    	<% } %>
+        	        		</li>
+
+        	       			<li> Drive ID: <%= userprofile.drives[i].driveid %></li>
+
+        	        		<hr>
+
+        	    <% }}}} %>	 
+
+				<div class="profile-userpic">
+					<img src="<%= userprofile.users[0].pic %>" class="img-responsive">	
+				</div>
+
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						<%= userprofile.users[0].username %>
+					</div>
+				</div>
+
+				<li> Leaving at: 9:00 </li>
+        	    <li> Pick Up: Muir College </li>
+		       	<li> Drop Off: Costa Verde </li>
+        		<li> Rides on: Mon, Wed, Fri</li>
+				<li> Drive ID: 0206</li>
+
+            </div>
+		</div>
+	</div>
+</div>
+</body>
+
+
+
+</html>
