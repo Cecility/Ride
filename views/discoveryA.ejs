@@ -9,17 +9,16 @@
 
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/sidebar.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/popup.css">
     
     <!-- Importing Google Fonts -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
-    
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Pacifico" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pacifico" />
 
+    <!-- Latest compiled JQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.js"
+    integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+    crossorigin="anonymous"></script>
 
-    <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    
 </head>
 
 
@@ -55,10 +54,10 @@
 				<!-- SIDEBAR MENU -->
 				<div class="profile-usermenu">
 					<ul class="nav">
-						<li class="active">
+						<li>
 							<a href="main"><span class="glyphicon glyphicon-user"></span>My Groups</a>
 						</li>
-						<li>
+						<li class="active">
 							<a href="discovery"><span class="glyphicon glyphicon-globe"></span>Discovery</a>
 						</li>
 						<li>
@@ -71,99 +70,131 @@
 		</div>
 
 
-
-
 		<!-- MAIN CONTENT -->
 		<div class="col-md-9">
             <div class="profile-content">
-            	<h1 align="center"> These are your rides! </h1>
-            		<h3 align="center"><a class="btn" href="addGroup" style="background-color:powderblue;">Wanna drive?</a></h3>
-            	<!-- go through the whole ride database
-            		if user's id == id of a rider...-->
-	            <% for(var h = 0; h < userprofile.rides.length; h++ ){ 
-    	        	if(userprofile.users[0].email == userprofile.rides[h].email){
-				
-						for(var i = 0; i < userprofile.drives.length; i++ ){ 
-							if(userprofile.rides[h].driveid == userprofile.drives[i].driveid) {%>
-								<!-- getting driver's pic -->
-								<div class="profile-userpic">
-									<% for(var k = 0; k < userprofile.users.length; k++){
-										if(userprofile.drives[i].email == userprofile.users[k].email){ %>		
-											<img src="<%= userprofile.users[k].pic %>" class="img-responsive">	
-									<% }} %>
-								</div>
-
-
-
-
-							<div class="profile-usertitle">
-								<div class="profile-usertitle-name">
-									<%= userprofile.drives[i].username %>
-								</div>
-							</div>
-        	       			
-        	       			<li> Leaving at: <%= userprofile.drives[i].time %> </li>
-        	       			<li> Pick Up: <%= userprofile.drives[i].pickup %> </li>
-		        	       	<li> Drop Off: <%= userprofile.drives[i].dropoff %> </li>
-
-        			     	<li> Rides on: 
-        	    		    	<% if(userprofile.drives[i].dates[0] == 1){ %>
-		        	        		Mon, 
-        			        	<% } %>
-
-        	    		    	<% if(userprofile.drives[i].dates[1] == 1){ %>
-        	        				Tue, 
-		        	        	<% } %>
-
-        			        	<% if(userprofile.drives[i].dates[2] == 1){ %>
-        	    		    		Wed, 
-        	        			<% } %>
-
-		        	        	<% if(userprofile.drives[i].dates[3] == 1){ %>
-        			        		Thu, 
-        	    		    	<% } %>
-
-        	        			<% if(userprofile.drives[i].dates[4] == 1){ %>
-        	        				Fri, 
- 			       	        	<% } %>
-
-        			        	<% if(userprofile.drives[i].dates[5] == 1){ %>
-        	        				Sat, 
-        	        			<% } %>
-
-		        	        	<% if(userprofile.drives[i].dates[6] == 1){ %>
-        			        		Sun
-        	    		    	<% } %>
-        	        		</li>
-
-        	       			<li> Drive ID: <%= userprofile.drives[i].driveid %></li>
-
-        	        		<hr>
-
-        	    <% }}}} %>	 
-
-        	    <div class="profile-userpic">
-					<img src="<%= userprofile.users[0].pic %>" class="img-responsive">	
-				</div>
-
-				<div class="profile-usertitle">
-					<div class="profile-usertitle-name">
-						<%= userprofile.users[0].username %>
+            	<h1 align="center"> Sign up for rides! </h1>
+    	        <% for(var i = 0; i < userprofile.drives.length; i++ ){ %>
+					<div class="profile-userpic">
+						<% for(var k = 0; k < userprofile.users.length; k++){
+							if(userprofile.drives[i].email == userprofile.users[k].email){ %>				
+								<img src="<%= userprofile.users[k].pic %>" class="img-responsive">		
+						<% }} %>
 					</div>
-				</div>
+					<div class="profile-usertitle">
+						<div class="profile-usertitle-name">
+							<%= userprofile.drives[i].username %>
+						</div>
+					</div>
+        	       	<li> Leaving at: <%= userprofile.drives[i].time %> </li>
+        	       	<li> Pick Up: <%= userprofile.drives[i].pickup %> </li>
+        	       	<li> Drop Off: <%= userprofile.drives[i].dropoff %> </li>
 
-				<li> Leaving at: 9:00 </li>
-        	    <li> Pick Up: Muir College </li>
-		       	<li> Drop Off: Costa Verde </li>
-        		<li> Rides on: Mon, Wed, Fri</li>
-				<li> Drive ID: 0206</li>
+        	     	<li> Rides on: 
+        	        	<% if(userprofile.drives[i].dates[0] == 1){ %>
+        	        		Mon, 
+        	        	<% } %>
+
+        	        	<% if(userprofile.drives[i].dates[1] == 1){ %>
+        	        		Tue, 
+        	        	<% } %>
+
+        	        	<% if(userprofile.drives[i].dates[2] == 1){ %>
+        	        		Wed, 
+        	        	<% } %>
+
+        	        	<% if(userprofile.drives[i].dates[3] == 1){ %>
+        	        		Thu, 
+        	        	<% } %>
+
+        	        	<% if(userprofile.drives[i].dates[4] == 1){ %>
+        	        		Fri, 
+        	        	<% } %>
+
+        	        	<% if(userprofile.drives[i].dates[5] == 1){ %>
+        	        		Sat, 
+        	        	<% } %>
+
+        	        	<% if(userprofile.drives[i].dates[6] == 1){ %>
+        	        		Sun
+        	        	<% } %>
+        	        </li>
+
+        	        <li> Drive ID: <%= userprofile.drives[i].driveid %></li>
+
+        	        <hr>
+
+        	    <% } %>
+			   
+                <div class="profile-userpic">
+                    <img src="<%= userprofile.users[0].pic %>" class="img-responsive">  
+                </div>
+
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">
+                        <%= userprofile.users[0].username %>
+                    </div>
+                </div>
+
+                <li> Leaving at: 9:00 </li>
+                <li> Pick Up: Muir College </li>
+                <li> Drop Off: Costa Verde </li>
+                <li> Rides on: Mon, Wed, Fri</li>
+                <li> Drive ID: 0206</li>
+
 
             </div>
 		</div>
+        
+        <!-- Floating input field for user to join ride group-->
+        <div class="follow-scroll" id="follow-scroll">
+            <label>
+                <input type="id" placeholder="Join group - Driver ID" name="driverid-input">
+            </label>
+            
+            <label>
+                <button type="button" class="btn btn-success">+</button>
+            </label>
+        </div>
+        
+        
 	</div>
 </div>
+
 </body>
+    
+    <script>
+    window.onload = function() {
 
+  function getScrollTop() {
+    if (typeof window.pageYOffset !== 'undefined' ) {
+      // Most browsers
+      return window.pageYOffset;
+    }
 
+    var d = document.documentElement;
+    if (d.clientHeight) {
+      // IE in standards mode
+      return d.scrollTop;
+    }
+
+    // IE in quirks mode
+    return document.body.scrollTop;
+  }
+
+  window.onscroll = function() {
+    var box = document.getElementById('follow-scroll'),
+        scroll = getScrollTop();
+
+    if (scroll <= 28) {
+      box.style.bottom = "30px";
+    }
+    else {
+      box.style.bottom = (-scroll + 50) + "px";
+    }
+  };
+
+};
+    </script>
 
 </html>
