@@ -76,8 +76,72 @@
 		<!-- MAIN CONTENT -->
 		<div class="col-md-9">
             <div class="profile-content">
-			   <p>main page</p>
-                <a href="#myPopup" id="addBtn" data-rel="popup" class="btn btn-default">+</a>
+
+            	<!-- go through the whole ride database
+            		if user's id == id of a rider...-->
+	            <% for(var h = 0; h < userprofile.rides.length; h++ ){ 
+    	        	if(userprofile.users[0].email == userprofile.rides[h].email){
+				
+						for(var i = 0; i < userprofile.drives.length; i++ ){ 
+							if(userprofile.rides[h].driveid == userprofile.drives[i].driveid) {%>
+								<!-- getting driver's pic -->
+								<div class="profile-userpic">
+									<% for(var k = 0; k < userprofile.users.length; k++){
+										if(userprofile.drives[i].email == userprofile.users[k].email){ %>		
+											<img src="<%= userprofile.users[k].pic %>" class="img-responsive">	
+									<% }} %>
+								</div>
+
+
+
+
+							<div class="profile-usertitle">
+								<div class="profile-usertitle-name">
+									<%= userprofile.drives[i].username %>
+								</div>
+							</div>
+        	       			
+        	       			<li> Leaving at: <%= userprofile.drives[i].time %> </li>
+        	       			<li> Pick Up: <%= userprofile.drives[i].pickup %> </li>
+		        	       	<li> Drop Off: <%= userprofile.drives[i].dropoff %> </li>
+
+        			     	<li> Rides on: 
+        	    		    	<% if(userprofile.drives[i].dates[0] == 1){ %>
+		        	        		Mon, 
+        			        	<% } %>
+
+        	    		    	<% if(userprofile.drives[i].dates[1] == 1){ %>
+        	        				Tue, 
+		        	        	<% } %>
+
+        			        	<% if(userprofile.drives[i].dates[2] == 1){ %>
+        	    		    		Wed, 
+        	        			<% } %>
+
+		        	        	<% if(userprofile.drives[i].dates[3] == 1){ %>
+        			        		Thu, 
+        	    		    	<% } %>
+
+        	        			<% if(userprofile.drives[i].dates[4] == 1){ %>
+        	        				Fri, 
+ 			       	        	<% } %>
+
+        			        	<% if(userprofile.drives[i].dates[5] == 1){ %>
+        	        				Sat, 
+        	        			<% } %>
+
+		        	        	<% if(userprofile.drives[i].dates[6] == 1){ %>
+        			        		Sun
+        	    		    	<% } %>
+        	        		</li>
+
+        	       			<li> Drive ID: <%= userprofile.drives[i].driveid %></li>
+
+        	        		<hr>
+
+        	    <% }}}} %>
+			   
+
 
 
             	    
