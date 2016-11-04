@@ -32,28 +32,28 @@
         <div class="btm-container" id="btm-container" >
             <div class="btn-group" data-toggle="btn" id="date-selector">
               <label class="btn btn-primary" >
-                <input type="checkbox" checked autocomplete="on">M
+                <input type="checkbox" id= "date" checked autocomplete="on">M
               </label>
               <label class="btn btn-primary">
-                <input type="checkbox" autocomplete="off"> T
+                <input type="checkbox" id="date" autocomplete="off"> T
               </label>
               <label class="btn btn-primary">
-                <input type="checkbox" autocomplete="off"> W
+                <input type="checkbox" id="date" autocomplete="off"> W
               </label>
                 <label class="btn btn-primary">
-                <input type="checkbox" autocomplete="off"> Th
+                <input type="checkbox" id="date" autocomplete="off"> Th
+                </label>
+                <label class="btn btn-primary">
+                <input type="checkbox" id="date" autocomplete="off"> F
               </label>
                 <label class="btn btn-primary">
-                <input type="checkbox" autocomplete="off"> F
-              </label>
-                <label class="btn btn-primary">
-                <input type="checkbox" autocomplete="off"> Sat
+                <input type="checkbox" id="date" autocomplete="off"> Sat
               </label>
               <label class="btn btn-primary">
-                <input type="checkbox" autocomplete="off"> Sun
+                <input type="checkbox" id="date" autocomplete="off"> Sun
               </label>
                 <label class="btn">
-                <input class="timepicker" placeholder="Pick a Time">
+                <input class="timepicker" placeholder="Set pickup time">
                 </label>
             </div>
                             
@@ -73,7 +73,21 @@
           // This example requires the Places library. Include the libraries=places
           // parameter when you first load the API. For example:
           // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-            var puLong, puLat, doLong, doLat;
+            
+          /** Variables to store the longitude and latitude of user selected addresses
+            * puLong - Pick Up Longitudinal
+            * puLat - Pick up latitudinal
+            * doLong - Drop off long
+            * doLat - Dro off Lat
+            * puaddr - Formatted pick up full address
+            * doaddr - Formatted drop off full address
+            * time - pick up time in format ~HH:MM AM/PM~
+          **/    
+          var puLong, puLat, doLong, doLat, puaddr, doaddr, time;
+            
+          // Use: to store user selected dates for ride group
+          var dateSelected = new Array();
+            
           function initAutocomplete() {
             var map = new google.maps.Map(document.getElementById('map'), {
               center: {lat: 32.880376, lng: -117.235065},
@@ -89,19 +103,33 @@
             var dateSelect = document.getElementById('date-selector');
             var submitBtn = document.getElementById('submit-btn');
             var btmContainer = document.getElementById('btm-container');
+              
+            // Initializing time selecter UI  
             $('.timepicker').timepicker({
                 timeFormat: 'h:mm p',
                 interval: 60,
                 minTime: '10',
                 maxTime: '6:00pm',
-                defaultTime: '11',
+                defaultTime: '0',
                 startTime: '10:00',
                 dynamic: false,
                 dropdown: false,
                 scrollbar: true
             });
               
+              
+            // Handle user clicking create group button  
             $('#submit-btn').on('click', function(event){
+                
+                $("input[type=checkbox]").each(function(index){
+                    if($(this).is(':checked'))
+                        dateSelected[index]=1;
+                    else
+                        dateSelected[index]=0;
+                    
+                    console.log(dateSelected); 
+                });
+                
                 if($('#pac-input').val() == ''){
                     $('#pac-input').css("border-color", "red");
                     console.log("Pick up location not selected");
@@ -111,11 +139,18 @@
                     $('#pac-input2').css("border-color", "red");
                     console.log("Drop off location not selected");
                     }
+                if($('.timepicker').val() == ''){
+                    $('.timepicker').css("border-color", "red");
+                    console.log("Pick up time not set");
+                }
                 
                 else if($('#pac-input2').val() != '' && $('#pac-input').val() != ''){
                     $('#pac-input').css("border-color", "transparent");
                     $('#pac-input2').css("border-color", "transparent");
-                    console.log("group created")
+                    $('.timepicker').css("border-color", "transparent");
+                    time = $('.timepicker').val();
+                    console.log("group created");
+                    console.log("pickup time is: "+time);
                 }
             })  
             // Applying Google Search Box property to Input
@@ -176,7 +211,9 @@
                 //Storing pick up location
                   puLong = place.geometry.location.lng();
                   puLat = place.geometry.location.lat();
+                  puaddr = place.formatted_address;
                   console.log("Pick up long: " + puLong + "Pickup Lat: " +puLat + '\n');
+                  console.log("pickup address is " + puaddr);
 
                 if (place.geometry.viewport) {
                   // Only geocodes have viewport.
@@ -231,8 +268,10 @@
                 //Storing Drop Off Location
                   doLong = place.geometry.location.lng();
                   doLat = place.geometry.location.lat();
+                  doaddr = place.formatted_address;
+                
                   console.log("Drop Off long: " + doLong + "Dropoff Lat " +doLat + '\n');
-
+                  console.log("pickup address is " + puaddr);
                 if (place.geometry.viewport) {
                   // Only geocodes have viewport.
                   bounds.union(place.geometry.viewport);
