@@ -10,8 +10,11 @@ var users = require('./routes/users');
 var discovery = require('./routes/discovery');
 var index = require('./routes/index');
 var main = require('./routes/main');
-var settings = require('./routes/settings')
-var addGroup = require('./routes/addGroup')
+var settings = require('./routes/settings');
+var addGroup = require('./routes/addGroup');
+
+var discoveryA = require('./routes/discoveryA');
+var mainA = require('./routes/mainA');
 
 var app = express();
 
@@ -33,6 +36,9 @@ app.get('/main', main.view);
 app.get('/discovery', discovery.view);
 app.get('/settings', settings.view);
 app.get('/addGroup', addGroup.view);
+app.get('/discoveryA', discoveryA.view);
+app.get('/mainA', mainA.view);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

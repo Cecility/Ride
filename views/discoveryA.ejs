@@ -125,6 +125,22 @@
         	        <hr>
 
         	    <% } %>
+			   
+                <div class="profile-userpic">
+                    <img src="<%= userprofile.users[0].pic %>" class="img-responsive">  
+                </div>
+
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">
+                        <%= userprofile.users[0].username %>
+                    </div>
+                </div>
+
+                <li> Leaving at: 9:00 </li>
+                <li> Pick Up: Muir College </li>
+                <li> Drop Off: Costa Verde </li>
+                <li> Rides on: Mon, Wed, Fri</li>
+                <li> Drive ID: 0206</li>
 
 
             </div>
@@ -149,9 +165,6 @@
     
     <script>
     window.onload = function() {
-    $('.btn-success').on('click',function(){
-        window.location.href = "http://rideordrive.herokuapp.com/mainA";
-    });
 
   function getScrollTop() {
     if (typeof window.pageYOffset !== 'undefined' ) {
