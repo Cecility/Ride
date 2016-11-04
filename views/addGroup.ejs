@@ -25,6 +25,11 @@
             <input id="pac-input2" class="controls" type="text" placeholder="Drop off location">  
         </div>
         
+        <div>
+        <a href="main" id="backBtn" style="background:white; color:black;">X</a>
+        </div>
+        
+        
         <!-- Display Google Map -->
         <div id="map"></div>
         
@@ -97,6 +102,7 @@
             });
 
             // Create the search box and link it to the UI element.
+            var backBtn = document.getElementById('backBtn');
             var input = document.getElementById('pac-input');
             var input2 = document.getElementById('pac-input2');
             var inputContainer = document.getElementById('pac-input-container');
@@ -157,7 +163,8 @@
             var searchBox = new google.maps.places.SearchBox(input);
             var searchBox2 = new google.maps.places.SearchBox(input2);
               
-            // Putting control elements into map  
+            // Putting control elements into map
+            map.controls[google.maps.ControlPosition.TOP_RIGHT].push(backBtn);
             map.controls[google.maps.ControlPosition.TOP_CENTER].push(inputContainer);
             map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(btmContainer);
 
