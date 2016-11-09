@@ -39,7 +39,6 @@ app.get('/addGroup', addGroup.view);
 app.get('/discoveryA', discoveryA.view);
 app.get('/mainA', mainA.view);
 
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
