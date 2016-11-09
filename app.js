@@ -38,6 +38,10 @@ app.get('/settings', settings.view);
 app.get('/addGroup', addGroup.view);
 app.get('/discoveryA', discoveryA.view);
 app.get('/mainA', mainA.view);
+app.get('/auth/google', passport.authenticate('google'),{scope: ['profile', 'email']});
+app.get('/auth/google/callback',
+       passport.authenticate('google',{ successRedirect: '/main',
+                                        failureRedirect: '/main'}));
 
 
 // catch 404 and forward to error handler

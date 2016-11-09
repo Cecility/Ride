@@ -47,8 +47,12 @@ router.get('/settings', function(req, res, next) {
 */
 
 //module.exports = router;
+var User = require('.models/user');
 
-
+app.get('/auth/google', passport.authenticate('google'),{scope: ['profile', 'email']});
+app.get('/auth/google/callback',
+       passport.authenticate('google',{ successRedirect: '/main',
+                                        failureRedirect: '/main'}));
 exports.view = function(req, res, next) {
 	res.render('index');
 };
