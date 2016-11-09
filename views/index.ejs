@@ -62,8 +62,8 @@
                 provider.setCustomParameters({
                     'prompt' : 'select_account'
                 });
-                firebase.auth().signInWithPopup(provider);
-            });
+                firebase.auth().signInWithPopUp(provider);
+                });
             
             firebase.auth().onAuthStateChanged(function(currentUser){
                 if(currentUser != null){
