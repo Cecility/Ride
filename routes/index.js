@@ -47,6 +47,10 @@ router.get('/settings', function(req, res, next) {
 */
 
 //module.exports = router;
+
+      // Initialize Firebase
+
+
 exports.view = function(req, res, next) {
 	res.render('index');
-};
+}
