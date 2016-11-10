@@ -4,3 +4,16 @@ exports.view = function(req, res, next) {
 	console.log(data)
 	res.render('main', { userprofile: data });
 };
+
+var models = require('../models');
+
+exports.view = function(req, res){
+	models.CreateRide
+		.find()
+		.sort('-time')
+		.exec(displayRide);
+
+		function displayRide(err, list_rides){
+			
+		}
+}
