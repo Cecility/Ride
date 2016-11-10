@@ -2,10 +2,14 @@
 var Mongoose = require('mongoose');
 
 
-var ProjectSchema = new Mongoose.Schema({
+var userSchema = new Mongoose.Schema({
   // fields are defined here
+  name: string,
+  email: string,
+  pic: string
 });
 
-exports.Project = Mongoose.model('Project', ProjectSchema);
+//exports.Project = Mongoose.model('user', userSchema);
 
 
+var user = mongoose.model('user', userSchema);
