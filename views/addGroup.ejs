@@ -35,7 +35,8 @@
         
         <!-- Select dates for group ride -->
         <div class="btm-container" id="btm-container" >
-            <div class="btn-group" data-toggle="btn" id="date-selector">
+              <div class="btn-group" data-toggle="btn" id="date-selector">
+              <form action = "/addGroup" method = "post">
               <label class="btn btn-primary" >
                 <input type="checkbox" id= "date" checked autocomplete="on">M
               </label>
@@ -60,12 +61,12 @@
                 <label class="btn">
                 <input class="timepicker" placeholder="Set pickup time">
                 </label>
-            </div>
+                    </form></div>
                             
              <!-- Submit Button -->
             <button id="submit-btn" class="btn btn-success">Create Group</button>
         </div>
-        
+
         <!-- Submit Button -->
 
         
@@ -159,7 +160,6 @@
                     console.log("pickup time is: "+time);
                 
 
-                    window.location.href = "http://rideordrive.herokuapp.com/discoveryA";
                 }
             })  
             // Applying Google Search Box property to Input
