@@ -12,17 +12,20 @@ exports.view = function(req, res, next) {
 
 var models = require('../models');
 
-exports.createRide = function(req, res){
-	var newRide = new models.CreateRide({
+exports.create = function(req, res){
+	var newRide = new models.ride({
         "username": "Hansol You",
         "email": "h5you@ucsd.edu",
         "driveid": "1234"
 	});
 
-	newUser.save(afterSaving);
+	res.send(newRide);
 
-	function afterSaving(err){ // this is a callback
-		if(err) { console.log(err); res.send(500); }
-		res.redirect('/main'); // redirect to main page if create successfully
-	}
+	// newUser.save(afterSaving);
+
+
+	// function afterSaving(err){ // this is a callback
+	// 	if(err) { console.log(err); res.send(500); }
+	// 	res.redirect('/main'); // redirect to main page if create successfully
+	// }
 }

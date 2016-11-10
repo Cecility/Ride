@@ -1,5 +1,5 @@
 {
-  "name": "introtoexpress",
+  "name": "ride",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -9,13 +9,27 @@
     "body-parser": "~1.13.2",
     "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",
+    "dotenv": "^2.0.0",
     "ejs": "~2.3.3",
-    "express": "~4.13.1",
+    "express": "^4.14.0",
     "firebase": "^3.6.0",
     "mongoose": "^4.6.6",
     "morgan": "~1.6.1",
     "passport-google": "^0.3.0",
     "passport-google-oauth": "^1.0.0",
     "serve-favicon": "~2.3.0"
-  }
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cecility/Ride.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cecility/Ride/issues"
+  },
+  "homepage": "https://github.com/Cecility/Ride#readme",
+  "description": ""
 }
