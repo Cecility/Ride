@@ -96,3 +96,9 @@
     width: 100%;
     height: 40px;
 }
+
+.timepicker{
+    height: 40px;
+    width: 400px;
+    text-align: center;
+}
