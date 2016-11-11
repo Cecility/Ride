@@ -35,8 +35,8 @@
         
         <!-- Select dates for group ride -->
         <div class="btm-container" id="btm-container" >
-              <div class="btn-group" data-toggle="btn" id="date-selector">
-              <form action = "/addGroup" method = "post">
+          <div class="btn-group" data-toggle="btn" id="date-selector">
+            <form action = "/addGroup" method = "post">
               <label class="btn btn-primary" >
                 <input type="checkbox" id= "date" name = "days" value = "Mon" checked autocomplete="on">M
               </label>
@@ -60,11 +60,12 @@
               </label>
                 <label class="btn">
                 <input class="timepicker" placeholder="Set pickup time">
-                </label>
-                    </form></div>
+              </label>
+            </form>
+          </div>
                             
              <!-- Submit Button -->
-            <button id="submit-btn" class="btn btn-success">Create Group</button>
+          <button id="submit-btn" class="btn btn-success">Create Group</button>
         </div>
 
         <!-- Submit Button -->
@@ -158,6 +159,16 @@
                     console.log("pickup time is: "+time);
                 
                 }
+
+
+
+                $.post("/addGroup", {
+                  time: time,
+                  dates: dateSelected,
+                  pickup: puaddr,
+                  dropoff: doaddr,});
+
+
             })  
             // Applying Google Search Box property to Input
             var searchBox = new google.maps.places.SearchBox(input);
@@ -278,6 +289,9 @@
               });
               map.fitBounds(bounds);
             });
+
+
+
           }
         </script>
         

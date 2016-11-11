@@ -19,15 +19,20 @@ exports.create = function(req, res){
         "username": "Hansol You",
         "email": "h5you@ucsd.edu",
         "driveid": "1234",
-        "time": "9:00PM",
-        "dates": [1, 0, 1, 0, 1, 0, 0],
-        "pickup": "Costa Verde",
-        "dropoff": "Muir College"
+        "time": req.body.time,
+        "dates": req.body.dates,
+        "pickup": req.body.pickup,
+        "dropoff": req.body.dropoff
 	});
 
 
-	res.send(req.body.days);
+	//res.send(req.body.days);
 
+	//console.log(req.body.days);
+
+	//res.send(req.body);
+
+	console.log(req.body);
 
 // exports.create = function(req, res){
 // 	var newRide = new models.ride({
@@ -37,13 +42,13 @@ exports.create = function(req, res){
 // 	});
 
 
-// 	res.send(req.body.days);
+	//res.send(req.body.days);
 
-	// newUser.save(afterSaving);
+	newDrive.save(afterSaving);
 
 
-	// function afterSaving(err){ // this is a callback
-	// 	if(err) { console.log(err); res.send(500); }
-	// 	res.redirect('/main'); // redirect to main page if create successfully
-	// }
+	function afterSaving(err){ // this is a callback
+		if(err) { console.log(err); res.send(500); }
+		res.redirect('/main'); // redirect to main page if create successfully
+	}
 }
