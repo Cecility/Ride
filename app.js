@@ -54,6 +54,7 @@ app.get('/discoveryA', discoveryA.view);
 app.get('/mainA', mainA.view);
 
 app.post('/addGroup', addGroup.create);
+app.post('/login', index.createUser);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
