@@ -16,7 +16,8 @@ var mongoose = require('mongoose');
 var userSchema = new mongoose.Schema({
     "username": String,
     "email": String,
-    "pic": String 
+    "pic": String,
+    "groups": [String]
 	}, {
 	collection: "users"
 });
@@ -32,11 +33,11 @@ var rideSchema = new mongoose.Schema({
 var driveSchema = new mongoose.Schema({
     "username": String,
     "email": String,
-    "driveid": Number, 
     "time": String,
     "dates": [Number],
     "pickup": String,
-    "dropoff": String
+    "dropoff": String,
+    "riders": [String]
 	}, {
 	collection: "drives"
 });
