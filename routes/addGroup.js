@@ -49,11 +49,6 @@ exports.create = function(req, res){
 
 	function afterSaving(err){ // this is a callback
 		if(err) { console.log(err); res.send(500); }
-
-		else{
-			location.href = "http://rideordrive.herokuapp.com/main"
-		}
-
 		res.redirect('/main'); // redirect to main page if create successfully
 	}
 }
