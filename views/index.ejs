@@ -62,10 +62,6 @@
         var username, useremail, picUrl, domain, uid;
         var login_btn = document.getElementById("sign-in-button");
 
-
-
-        firebase.initializeApp(config);
-
         $("#sign-in-button").on("click", function(){
             var provider = new firebase.auth.GoogleAuthProvider();
             provider.setCustomParameters({
