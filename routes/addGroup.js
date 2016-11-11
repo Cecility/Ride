@@ -12,14 +12,32 @@ exports.view = function(req, res, next) {
 
 var models = require('../models');
 
+
+
 exports.create = function(req, res){
-	var newRide = new models.ride({
+	var newDrive = new models.drive({
         "username": "Hansol You",
         "email": "h5you@ucsd.edu",
-        "driveid": "1234"
+        "driveid": "1234",
+        "time": "9:00PM",
+        "dates": [1, 0, 1, 0, 1, 0, 0],
+        "pickup": "Costa Verde",
+        "dropoff": "Muir College"
 	});
 
-	res.send(newRide);
+
+	res.send(req.body.days);
+
+
+// exports.create = function(req, res){
+// 	var newRide = new models.ride({
+//         "username": "Hansol You",
+//         "email": "h5you@ucsd.edu",
+//         "driveid": "1234"
+// 	});
+
+
+// 	res.send(req.body.days);
 
 	// newUser.save(afterSaving);
 
