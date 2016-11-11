@@ -22,7 +22,7 @@ exports.create = function(req, res){
         "dates": req.body.dates,
         "pickup": req.body.pickup,
         "dropoff": req.body.dropoff,
-        "riders": [String]
+        "riders": []
 	});
 
 
