@@ -76,9 +76,9 @@
 
             	<h1 align="center"> Sign up for rides! </h1>
                 
+                <% for(var i = 0; i < dbdrive.length; i++ ){ %>
+                
                 <div id="discover-post-container">  
-
-    	        <% for(var i = 0; i < dbdrive.length; i++ ){ %>
 
                     <div class="profile-userpic">
                         <% for(var k = 0; k < dbuser.length; k++){
@@ -123,11 +123,23 @@
         	        	<% if(dbdrive[i].dates[5] == 1){ %>
         	        		Sat, 
         	        	<% } %>
-
+                        
         	        	<% if(dbdrive[i].dates[6] == 1){ %>
         	        		Sun
         	        	<% } %>
         	        </li>
+                    
+                    <form action="/discovery/joinGroup" method="post">
+                        <lable>
+                            <input type="text" id="groupId-form" name="groupId" value="<%=dbdrive[i]._id%>">
+                        </lable>
+                        
+                        <div class="col-md-4 text-center" id="join-btn-container">
+                            <input type="submit" id="join-btn" class="btn btn-success" value="Join Group">
+                        </div>
+                    </form>
+                </div>
+                <hr>
         	    <% } %>
 
             </div>
@@ -144,8 +156,7 @@
             </label>
         </div>
         
-        
-	       </div>
+    
         </div>
     </div>
 </body>
