@@ -98,10 +98,8 @@
             	<!-- how do we know the current user? it's always Han because Han is just that important lol -->
             	<% var cu = 0;
             	for(var i = 0; i < dbuser.length; i++){
-            		console.log("looking for Han..");
             		if(dbuser[i]._id == "582552e6dcba0f326cc71a6e"){
             			cu = i;
-            			console.log("found Han! " + dbuser[i].username);
             		}
             	}%>
 
@@ -110,76 +108,67 @@
             	<!-- go through the whole ride database
             		if user's id == id of a rider...-->
 	            <%
-	            console.log("Han is at index " + cu);
 	            for(var h = 0; h < dbuser[cu].groups.length; h++ ){ 
-	            	for(var q = 0; q < dbdrive.length; q++ ){ 
-	    	        	if(dbuser[cu].groups[h] == dbdrive[q]._id){
-	    	        		if(dbuser[cu].username != dbdrive[q].username){
-	    	 
-
-						
-								for(var i = 0; i < userprofile.drives.length; i++ ){ 
-									if(userprofile.rides[h].driveid == userprofile.drives[i].driveid) {%>
-										<!-- getting driver's pic -->
-										<div class="profile-userpic">
-											<% for(var k = 0; k < dbuser.length; k++){
-												if(dbdrive[i].email == dbuser[k].email){ %>		
-													<img src="<%= dbuser[k].pic %>" class="img-responsive">	
-											<% }} %>
-										</div>
+	            	for(var i = 0; i < dbdrive.length; i++ ){ 
+	    	        	if(dbuser[cu].groups[h] == dbdrive[i]._id){
+	    	        		if(dbuser[cu].username != dbdrive[i].username){ %>
+								<!-- getting driver's pic -->
+								<div class="profile-userpic">
+									<% for(var k = 0; k < dbuser.length; k++){
+										if(dbdrive[i].username == dbuser[k].username){%>		
+											<img src="<%= dbuser[k].pic %>" class="img-responsive">	
+									<% }} %>
+								</div>
 
 
 
 
-									<div class="profile-usertitle">
-										<div class="profile-usertitle-name">
-											<%= dbdrive[i].username %>
-										</div>
+								<div class="profile-usertitle">
+									<div class="profile-usertitle-name">
+										<%= dbdrive[i].username %>
 									</div>
-		        	       			
-		        	       			<li> Leaving at: <%= dbdrive[i].time %> </li>
-		        	       			<li> Pick Up: <%= dbdrive[i].pickup %> </li>
-				        	       	<li> Drop Off: <%= dbdrive[i].dropoff %> </li>
+								</div>
+	        	       			
+	        	       			<li> Leaving at: <%= dbdrive[i].time %> </li>
+	        	       			<li> Pick Up: <%= dbdrive[i].pickup %> </li>
+			        	       	<li> Drop Off: <%= dbdrive[i].dropoff %> </li>
 
-		        			     	<li> Rides on: 
-		        	    		    	<% if(dbdrive[i].dates[0] == 1){ %>
-				        	        		Mon, 
-		        			        	<% } %>
+	        			     	<li> Rides on: 
+	        	    		    	<% if(dbdrive[i].dates[0] == 1){ %>
+			        	        		Mon, 
+	        			        	<% } %>
 
-		        	    		    	<% if(dbdrive[i].dates[1] == 1){ %>
-		        	        				Tue, 
-				        	        	<% } %>
+	        	    		    	<% if(dbdrive[i].dates[1] == 1){ %>
+	        	        				Tue, 
+			        	        	<% } %>
 
-		        			        	<% if(dbdrive[i].dates[2] == 1){ %>
-		        	    		    		Wed, 
-		        	        			<% } %>
+	        			        	<% if(dbdrive[i].dates[2] == 1){ %>
+	        	    		    		Wed, 
+	        	        			<% } %>
 
-				        	        	<% if(dbdrive[i].dates[3] == 1){ %>
-		        			        		Thu, 
-		        	    		    	<% } %>
+			        	        	<% if(dbdrive[i].dates[3] == 1){ %>
+	        			        		Thu, 
+	        	    		    	<% } %>
 
-		        	        			<% if(dbdrive[i].dates[4] == 1){ %>
-		        	        				Fri, 
-		 			       	        	<% } %>
+	        	        			<% if(dbdrive[i].dates[4] == 1){ %>
+	        	        				Fri, 
+	 			       	        	<% } %>
 
-		        			        	<% if(dbdrive[i].dates[5] == 1){ %>
-		        	        				Sat, 
-		        	        			<% } %>
+	        			        	<% if(dbdrive[i].dates[5] == 1){ %>
+	        	        				Sat, 
+	        	        			<% } %>
 
-				        	        	<% if(dbdrive[i].dates[6] == 1){ %>
-		        			        		Sun
-		        	    		    	<% } %>
-		        	        		</li>
+			        	        	<% if(dbdrive[i].dates[6] == 1){ %>
+	        			        		Sun
+	        	    		    	<% } %>
+	        	        		</li>
 
-        	        				<hr>
+	        				<hr>
 
-        	    				<% }
-        	    			}
-        	    		}
-        	    	}
-        	    }
-        	} %>	    
-			   <p>main page</p>
+	    				<% }
+	    			}
+	    		}
+			} %>	    
 
 
   
