@@ -38,7 +38,7 @@
           <div class="btn-group" data-toggle="btn" id="date-selector">
             <form action = "/addGroup" method = "post">
               <label class="btn btn-primary" >
-                <input type="checkbox" id= "date" name = "days" value = "Mon" checked autocomplete="on">M
+                <input type="checkbox" id= "date" name = "days" value = "Mon">M
               </label>
               <label class="btn btn-primary">
                 <input type="checkbox" id="date" name = "days" value = "Tue" autocomplete="off"> T
@@ -114,11 +114,10 @@
             $('.timepicker').timepicker({
                 timeFormat: 'h:mm p',
                 interval: 60,
-                minTime: '10',
-                maxTime: '6:00pm',
-                defaultTime: '0',
+                minTime: '0:00am',
+                maxTime: '11:59pm',
                 startTime: '10:00',
-                dynamic: false,
+                dynamic: true,
                 dropdown: false,
                 scrollbar: true
             });

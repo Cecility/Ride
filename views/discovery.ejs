@@ -75,6 +75,10 @@
             <div class="profile-content">
             	<h1 align="center"> Sign up for rides! </h1>
     	        <% for(var i = 0; i < userprofile.drives.length; i++ ){ %>
+                
+                
+                <div id="discover-post-container">  
+                    
 					<div class="profile-userpic">
 						<% for(var k = 0; k < userprofile.users.length; k++){
 							if(userprofile.drives[i].email == userprofile.users[k].email){ %>				
@@ -89,7 +93,6 @@
         	       	<li> Leaving at: <%= userprofile.drives[i].time %> </li>
         	       	<li> Pick Up: <%= userprofile.drives[i].pickup %> </li>
         	       	<li> Drop Off: <%= userprofile.drives[i].dropoff %> </li>
-
         	     	<li> Rides on: 
         	        	<% if(userprofile.drives[i].dates[0] == 1){ %>
         	        		Mon, 
@@ -121,11 +124,20 @@
         	        </li>
 
         	        <li> Drive ID: <%= userprofile.drives[i].driveid %></li>
-
-        	        <hr>
-
+                    
+                    <form action="/discovery/joinGroup" method="post">
+                        <lable>
+                            <input type="text" id="groupId-form" name="groupId" value="<%=userprofile.drives[i].driveid%>">
+                        </lable>
+                        
+                        <div class="col-md-4 text-center" id="join-btn-container">
+                            <input type="submit" id="join-btn" class="btn btn-success" value="Join Group">
+                        </div>
+                    </form>
+                </div>
+                <hr>
         	    <% } %>
-
+                
 
             </div>
 		</div>
