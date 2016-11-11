@@ -73,71 +73,62 @@
 		<!-- MAIN CONTENT -->
 		<div class="col-md-9">
             <div class="profile-content">
+
             	<h1 align="center"> Sign up for rides! </h1>
-    	        <% for(var i = 0; i < userprofile.drives.length; i++ ){ %>
-                
                 
                 <div id="discover-post-container">  
-                    
-					<div class="profile-userpic">
-						<% for(var k = 0; k < userprofile.users.length; k++){
-							if(userprofile.drives[i].email == userprofile.users[k].email){ %>				
-								<img src="<%= userprofile.users[k].pic %>" class="img-responsive">		
-						<% }} %>
-					</div>
+
+    	        <% for(var i = 0; i < dbdrive.length; i++ ){ %>
+
+                    <div class="profile-userpic">
+                        <% for(var k = 0; k < dbuser.length; k++){
+                            if(dbdrive[i].email == dbuser[k].email){ %>               
+                                <img src="<%= dbuser[k].pic %>" class="img-responsive">      
+                        <% }} %>
+                    </div>
+
+
 					<div class="profile-usertitle">
 						<div class="profile-usertitle-name">
-							<%= userprofile.drives[i].username %>
+							<%= dbdrive[i].username %>
 						</div>
 					</div>
-        	       	<li> Leaving at: <%= userprofile.drives[i].time %> </li>
-        	       	<li> Pick Up: <%= userprofile.drives[i].pickup %> </li>
-        	       	<li> Drop Off: <%= userprofile.drives[i].dropoff %> </li>
+                
+        	       	<li> Leaving at: <%= dbdrive[i].time %> </li>
+        	       	<li> Pick Up: <%= dbdrive[i].pickup %> </li>
+        	       	<li> Drop Off: <%= dbdrive[i].dropoff %> </li>
+
+
         	     	<li> Rides on: 
-        	        	<% if(userprofile.drives[i].dates[0] == 1){ %>
+        	        	<% if(dbdrive[i].dates[0] == 1){ %>
         	        		Mon, 
         	        	<% } %>
 
-        	        	<% if(userprofile.drives[i].dates[1] == 1){ %>
+        	        	<% if(dbdrive[i].dates[1] == 1){ %>
         	        		Tue, 
         	        	<% } %>
 
-        	        	<% if(userprofile.drives[i].dates[2] == 1){ %>
+        	        	<% if(dbdrive[i].dates[2] == 1){ %>
         	        		Wed, 
         	        	<% } %>
 
-        	        	<% if(userprofile.drives[i].dates[3] == 1){ %>
+        	        	<% if(dbdrive[i].dates[3] == 1){ %>
         	        		Thu, 
         	        	<% } %>
 
-        	        	<% if(userprofile.drives[i].dates[4] == 1){ %>
+        	        	<% if(dbdrive[i].dates[4] == 1){ %>
         	        		Fri, 
         	        	<% } %>
 
-        	        	<% if(userprofile.drives[i].dates[5] == 1){ %>
+        	        	<% if(dbdrive[i].dates[5] == 1){ %>
         	        		Sat, 
         	        	<% } %>
 
-        	        	<% if(userprofile.drives[i].dates[6] == 1){ %>
+        	        	<% if(dbdrive[i].dates[6] == 1){ %>
         	        		Sun
         	        	<% } %>
         	        </li>
-
-        	        <li> Drive ID: <%= userprofile.drives[i].driveid %></li>
-                    
-                    <form action="/discovery/joinGroup" method="post">
-                        <lable>
-                            <input type="text" id="groupId-form" name="groupId" value="<%=userprofile.drives[i].driveid%>">
-                        </lable>
-                        
-                        <div class="col-md-4 text-center" id="join-btn-container">
-                            <input type="submit" id="join-btn" class="btn btn-success" value="Join Group">
-                        </div>
-                    </form>
-                </div>
-                <hr>
         	    <% } %>
-                
 
             </div>
 		</div>
@@ -154,9 +145,9 @@
         </div>
         
         
-	</div>
-</div>
-
+	       </div>
+        </div>
+    </div>
 </body>
     
     <script>

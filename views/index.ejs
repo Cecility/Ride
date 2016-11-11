@@ -62,6 +62,7 @@
         var username, useremail, picUrl, domain, uid;
         var login_btn = document.getElementById("sign-in-button");
 
+<<<<<<< HEAD
         var config = {
             apiKey: "AIzaSyCkkZLilGWMKEobaGnn5wq6eeiWsV4julU",
             authDomain: "ride-175f3.firebaseapp.com",
@@ -79,6 +80,7 @@
             });
             firebase.auth().signInWithPopup(provider);
             });
+
 
         firebase.auth().onAuthStateChanged(function(currentUser){
             if(currentUser != null){
@@ -127,6 +129,18 @@
         $.post('/login', 
                {name: username, email: useremail, picture: picUrl});
         });
+    </script>
+
+    <script>
+        var config = {
+        apiKey: "AIzaSyCkkZLilGWMKEobaGnn5wq6eeiWsV4julU",
+        authDomain: "ride-175f3.firebaseapp.com",
+        databaseURL: "https://ride-175f3.firebaseio.com",
+        storageBucket: "ride-175f3.appspot.com",
+        messagingSenderId: "344088152572"
+      };
+
+      firebase.initializeApp(config);
     </script>
 
     

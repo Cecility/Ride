@@ -1,6 +1,5 @@
 exports.view = function(req, res, next) {
 	res.render('addGroup');
-    
 };
 
 /*exports.addGroup = function(req, res) {
@@ -18,11 +17,11 @@ exports.create = function(req, res){
 	var newDrive = new models.drive({
         "username": "Hansol You",
         "email": "h5you@ucsd.edu",
-        "driveid": "1234",
         "time": req.body.time,
         "dates": req.body.dates,
         "pickup": req.body.pickup,
-        "dropoff": req.body.dropoff
+        "dropoff": req.body.dropoff,
+        "riders": []
 	});
 
 
