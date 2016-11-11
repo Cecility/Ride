@@ -11,7 +11,6 @@ var mongoose = require('mongoose');
 
 //exports.Project = Mongoose.model('user', userSchema);
 
-
 //var user = mongoose.model('user', userSchema);
 
 var userSchema = new mongoose.Schema({
