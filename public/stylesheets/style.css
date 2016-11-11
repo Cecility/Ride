@@ -1,3 +1,6 @@
+hr{
+    width: 100%;
+}
 video{
   position: fixed;
   top: 50%;
@@ -84,8 +87,6 @@ form{
     font-size: 5em;
     font-family: "Pacifico"
 }
-
-
 
 
 
@@ -280,6 +281,20 @@ form{
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+}
+
+#join-btn-container{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#join-btn{
+    width: 80%;
+    height: 40px;
+}
+
+#groupId-form{
+    display: none;
 }
 
 /* The Close Button */
