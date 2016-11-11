@@ -13,9 +13,6 @@ var main = require('./routes/main');
 var settings = require('./routes/settings');
 var addGroup = require('./routes/addGroup');
 
-var discoveryA = require('./routes/discoveryA');
-var mainA = require('./routes/mainA');
-
 var app = express();
 
 
