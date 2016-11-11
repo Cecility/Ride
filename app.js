@@ -47,8 +47,8 @@ app.get('/main', main.view);
 app.get('/discovery', discovery.view);
 app.get('/settings', settings.view);
 app.get('/addGroup', addGroup.view);
-app.get('/discoveryA', discoveryA.view);
-app.get('/mainA', mainA.view);
+
+
 
 app.post('/addGroup', addGroup.create);
 
