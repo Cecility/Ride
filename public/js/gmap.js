@@ -1,81 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        
-        <!-- Linking CSS -->
-        <link rel="stylesheet" type="text/css" href="/stylesheets/addGroup.css">
-        
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        
-        <script src="https://code.jquery.com/jquery-3.1.1.js"
-        integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
-        crossorigin="anonymous"></script>
-        
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-        
-    </head>
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-    
-    <body>
-        <!-- Search Bars -->
-        <div id="pac-input-container">
-            <input id="pac-input" class="controls" type="text" placeholder="Pick up location">
-            <input id="pac-input2" class="controls" type="text" placeholder="Drop off location">  
-        </div>
-        
-        <div>
-        <a href="main" id="backBtn" style="background:white; color:black;">X</a>
-        </div>
-        
-        
-        <!-- Display Google Map -->
-        <div id="map"></div>
-        
-        <!-- Select dates for group ride -->
-        <div class="btm-container" id="btm-container" >
-          <div class="btn-group" data-toggle="btn" id="date-selector">
-            <form action = "/addGroup" method = "post">
-              <label class="btn btn-primary" >
-                <input type="checkbox" id= "date" name = "days" value = "Mon" checked autocomplete="on">M
-              </label>
-              <label class="btn btn-primary">
-                <input type="checkbox" id="date" name = "days" value = "Tue" autocomplete="off"> T
-              </label>
-              <label class="btn btn-primary">
-                <input type="checkbox" id="date" name = "days" value = "Wed" autocomplete="off"> W
-              </label>
-                <label class="btn btn-primary">
-                <input type="checkbox" id="date" name = "days" value = "Thur" autocomplete="off"> Th
-                </label>
-                <label class="btn btn-primary">
-                <input type="checkbox" id="date" name = "days" value = "Fri" autocomplete="off"> F
-              </label>
-                <label class="btn btn-primary">
-                <input type="checkbox" id="date" name = "days" value = "Sat" autocomplete="off"> Sat
-              </label>
-              <label class="btn btn-primary">
-                <input type="checkbox" id="date" name = "days" value = "Sun" autocomplete="off"> Sun
-              </label>
-                <label class="btn">
-                <input class="timepicker" placeholder="Set pickup time">
-              </label>
-            </form>
-          </div>
-                            
-             <!-- Submit Button -->
-          <button id="submit-btn" class="btn btn-success">Create Group</button>
-        </div>
-
-        <!-- Submit Button -->
-
-        
-        
-        <script>
-          // This example adds a search box to a map, using the Google Place Autocomplete
+ // This example adds a search box to a map, using the Google Place Autocomplete
           // feature. People can enter geographical searches. The search box will return a
           // pick list containing a mix of places and predicted search terms.
+
           // This example requires the Places library. Include the libraries=places
           // parameter when you first load the API. For example:
           // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
@@ -101,6 +27,7 @@
               mapTypeId: 'roadmap',
               mapTypeControl: false,
             });
+
             // Create the search box and link it to the UI element.
             var backBtn = document.getElementById('backBtn');
             var input = document.getElementById('pac-input');
@@ -157,19 +84,10 @@
                     time = $('.timepicker').val();
                     console.log("group created");
                     console.log("pickup time is: "+time);
-                
+                    window.location.href("/createGroup");
                 }
-
-
-
-                $.post("/addGroup", {
-                  time: time,
-                  dates: dateSelected,
-                  pickup: puaddr,
-                  dropoff: doaddr,});
-
-
-            })  
+            })
+            
             // Applying Google Search Box property to Input
             var searchBox = new google.maps.places.SearchBox(input);
             var searchBox2 = new google.maps.places.SearchBox(input2);
@@ -178,28 +96,34 @@
             map.controls[google.maps.ControlPosition.TOP_RIGHT].push(backBtn);
             map.controls[google.maps.ControlPosition.TOP_CENTER].push(inputContainer);
             map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(btmContainer);
+
             // Bias the SearchBox results towards current map's viewport.
             map.addListener('bounds_changed', function() {
               searchBox.setBounds(map.getBounds());
               searchBox2.setBounds(map.getBounds());
             });
               
+
             var markers = [];
             var markers2 = [];
               
             // Listen for the event fired when the user selects a prediction and retrieve
             // more details for that place.
+
             // FOR PICKUP
             searchBox.addListener('places_changed', function() {
               var places = searchBox.getPlaces();
+
               if (places.length == 0) {
                 return;
               }
+
               // Clear out the old markers.
               markers.forEach(function(marker) {
                 marker.setMap(null);
               });
               markers = [];
+
               // For each place, get the icon, name and location.
               var bounds = new google.maps.LatLngBounds();
               places.forEach(function(place) {
@@ -214,6 +138,7 @@
                   anchor: new google.maps.Point(17, 34),
                   scaledSize: new google.maps.Size(25, 25)
                 };
+
                 // Create a marker for each place.
                 markers.push(new google.maps.Marker({
                   map: map,
@@ -228,6 +153,7 @@
                   puaddr = place.formatted_address;
                   console.log("Pick up long: " + puLong + "Pickup Lat: " +puLat + '\n');
                   console.log("pickup address is " + puaddr);
+
                 if (place.geometry.viewport) {
                   // Only geocodes have viewport.
                   bounds.union(place.geometry.viewport);
@@ -237,20 +163,25 @@
               });
               map.fitBounds(bounds);
             });
+
+
             // FOR DROP OFF
             searchBox2.addListener('places_changed', function() {
               var places = searchBox2.getPlaces();
+
               if (places.length == 0 || places.length != 1) {
                 console.log("Please select a specific address ")
                 return;
               }
                 
+
                 
               // Clear out the old markers.
               markers2.forEach(function(marker) {
                 marker.setMap(null);
               });
               markers2 = [];
+
               // For each place, get the icon, name and location.
               var bounds = new google.maps.LatLngBounds();
               places.forEach(function(place) {
@@ -265,6 +196,7 @@
                   anchor: new google.maps.Point(17, 34),
                   scaledSize: new google.maps.Size(25, 25)
                 };
+
                 // Create a marker for each place.
                 markers2.push(new google.maps.Marker({
                   map: map,
@@ -289,13 +221,4 @@
               });
               map.fitBounds(bounds);
             });
-
-
-
           }
-        </script>
-        
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm_HyYv53RLUIrqJICXV736xFbliLqSVA&libraries=places&callback=initAutocomplete"
-             async defer></script>
-    </body>
-</html>
