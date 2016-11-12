@@ -26,32 +26,62 @@ exports.create = function (req, res){
     var groupId = req.body.groupId;
     var currGroupId = [];
     
-    models.user.find({'_id':"582552e6dcba0f326cc71a6e"}, function(err, userData){
-        if (userData.length > 0)
-            currGroupId = userData[0].groups;
+    var userId = "582552e6dcba0f326cc71a6e";
+    var currRidersId = [];
+    
+    models.drive.find({'_id':groupId}, function(err, userData){
+       
+        if(userData.length>0){
+            for(var i=0; i<userData[0].riders.length; i++){
+                currRidersId[i] = userData[0].riders[i];
+                console.log("currently adding userId " + currRidersId[i]);
+            }
+            
+            if(!currRidersId.includes(userId)){
+                currRidersId[currRidersId.length] = userId;
+                console.log('UserId to be uploaded ' + userId);
+            }
+            
+            else
+                console.log(userId + " already exist");
+            
+            models.drive.find({'_id':groupId}).update({'riders':currRidersId}).exec(function(){console.log("Added rider id");});
+        }
+        
+        else{
+            console.log('Ride group requested doese not exist');
+            console.log(err);
+        }
+           
+    });
+    
+    models.user.find({'_id': userId}, function(err, userData){
+        if (userData.length > 0){
+            for(var i = 0; i < userData[0].groups.length; i++){
+                currGroupId[i] = userData[0].groups[i];
+                console.log("currently adding groupId  " + currGroupId[i]);
+            }
+    
+            if(!currGroupId.includes(groupId)){
+                currGroupId[currGroupId.length] = groupId;
+                console.log("GroupId to be uploaded " + currGroupId);
+            }
+            
+            else
+                console.log(groupId + " already exist");
+        
+        
+            models.user.find({'_id': userId}).update({"groups": currGroupId}).exec(afterUpdating);
+        }
         
         else{
             console.log("user does not exist on database");
             console.log(err);
         }
     
-        
-        for(var i = 0; i < userData[0].groups.length; i++){
-            currGroupId[i] = userData[0].groups[i];
-            console.log("currently adding " + currGroupId[i]);
-        }
-        
-        currGroupId[currGroupId.length] = groupId;
-        console.log("to be uplaoded " + currGroupId);
-        
-         models.user.find({'_id': "582552e6dcba0f326cc71a6e"}).update({"groups": currGroupId}).exec(afterUpdating);
-    
     function afterUpdating(err){
-        if(err)
-            console.log(err);
-        else
-            console.log("new id added was " + groupId);
+		if(err) { console.log(err); res.send(500); }
+		res.redirect('/discovery'); 
     }   
     });
-
 };
