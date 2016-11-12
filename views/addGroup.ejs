@@ -156,18 +156,20 @@
                     time = $('.timepicker').val();
                     console.log("group created");
                     console.log("pickup time is: "+time);
-                
+
+                    $.post("/addGroup", {
+                    time: time,
+                    dates: dateSelected,
+                    pickup: puaddr,
+                    dropoff: doaddr,});
+
+                    location.href = "http://rideordrive.herokuapp.com/main"
+                  
                 }
 
 
 
-                $.post("/addGroup", {
-                  time: time,
-                  dates: dateSelected,
-                  pickup: puaddr,
-                  dropoff: doaddr,});
 
-                location.href = "http://rideordrive.herokuapp.com/main"
 
 
             })  
@@ -213,7 +215,7 @@
                   size: new google.maps.Size(71, 71),
                   origin: new google.maps.Point(0, 0),
                   anchor: new google.maps.Point(17, 34),
-                  scaledSize: new google.maps.Size(25, 25)
+                  scaledSize: new google.maps.Size(100, 100)
                 };
                 // Create a marker for each place.
                 markers.push(new google.maps.Marker({
