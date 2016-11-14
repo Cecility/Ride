@@ -1,5 +1,6 @@
 var fs = require('fs');
 var models = require('../models');
+var $ = require('jQuery');
 
 exports.view = function(req, res, next) {
 	var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
