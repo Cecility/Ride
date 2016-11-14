@@ -62,7 +62,7 @@ exports.create = function (req, res){
                 console.log("currently adding groupId  " + currGroupId[i]);
             }
     
-            if(!currGroupId.includes(groupId)){
+            if(currGroupId.indexOf(groupId) != -1){
                 currGroupId[currGroupId.length] = groupId;
                 console.log("GroupId to be uploaded " + currGroupId);
             }
