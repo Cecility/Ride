@@ -1,6 +1,5 @@
 var fs = require('fs');
 var models = require('../models');
-var $ = require('jQuery');
 
 exports.view = function(req, res, next) {
 	var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
@@ -38,7 +37,7 @@ exports.create = function (req, res){
                 console.log("currently adding userId " + currRidersId[i]);
             }
             
-            if($.inArray(userId, currRidersId) != -1){
+            if(!currRidersId.includes(userId)){
                 currRidersId[currRidersId.length] = userId;
                 console.log('UserId to be uploaded ' + userId);
             }
