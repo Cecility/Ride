@@ -37,7 +37,7 @@ exports.create = function (req, res){
                 console.log("currently adding userId " + currRidersId[i]);
             }
             
-            if(!currRidersId.includes(userId)){
+            if(currRidersId.indexOf(userId) != -1){
                 currRidersId[currRidersId.length] = userId;
                 console.log('UserId to be uploaded ' + userId);
             }
