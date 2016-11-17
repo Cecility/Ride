@@ -36,7 +36,11 @@ var driveSchema = new mongoose.Schema({
     "time": String,
     "dates": [Number],
     "pickup": String,
+    "pickupLong": String,
+    "pickupLat": String,
     "dropoff": String,
+    "dropoffLong": String,
+    "dropoffLat": String,
     "riders": [String]
 	}, {
 	collection: "drives"
