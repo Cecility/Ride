@@ -13,7 +13,7 @@
     <!-- Importing Google Fonts -->
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" />
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pacifico" />
-
+    
     <!-- Latest compiled JQuery -->
     <script src="https://code.jquery.com/jquery-3.1.1.js"
     integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
@@ -76,16 +76,13 @@
 
             	<h1 align="center"> Sign up for rides! </h1>
                 
-                <% for(var i = 0; i < dbdrive.length; i++ ){ %>
+            <% for(var i = 0; i < dbdrive.length; i++ ){ %>
                 
                 <div id="discover-post-container">  
 
-                    <div class="profile-userpic">
-                        <% for(var k = 0; k < dbuser.length; k++){
-                            if(dbdrive[i].email == dbuser[k].email){ %>               
-                                <img src="<%= dbuser[k].pic %>" class="img-responsive">      
-                        <% }} %>
-                    </div>
+                    <div id="<%=i%>" style="width: 500px; height:400px; display: block; text-align: center;"></div>    
+                </div>
+               
 
 
 					<div class="profile-usertitle">
@@ -147,7 +144,26 @@
         
     
     </div>
-</div>
 </body>
+    
+
+    
+<script>
+    function initAutocomplete(){
+        var dbdrive = <%- JSON.stringify(dbdrive) %>;
+        for(i=0; i<dbdrive.length; i++){
+            console.log('dbdrive looks like ' + dbdrive[1]);
+            var map = new google.maps.Map(document.getElementById(i), {
+            center: {lat: 32.880376, lng: -117.235065},
+            zoom: 13,
+            mapTypeId: 'roadmap',
+            mapTypeControl: false,
+            });
+        }
+    }
+</script>
+    
+<!-- Google Map Api-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm_HyYv53RLUIrqJICXV736xFbliLqSVA&libraries=places&callback=initAutocomplete" async defer></script>
 
 </html>
