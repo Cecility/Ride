@@ -16,7 +16,6 @@ exports.view = function(req, res, next) {
 			if (err){
 				throw err;
 			}
-
 			res.render('discovery', { userprofile: data , dbdrive: dbdrivedata, dbuser: dbuserdata });
 		});
 	});
