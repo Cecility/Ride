@@ -113,11 +113,8 @@
 	    	        	if(dbuser[cu].groups[h] == dbdrive[i]._id){
 	    	        		if(dbuser[cu].username != dbdrive[i].username){ %>
 								<!-- getting driver's pic -->
-								<div class="profile-userpic">
-									<% for(var k = 0; k < dbuser.length; k++){
-										if(dbdrive[i].username == dbuser[k].username){%>		
-											<img src="<%= dbuser[k].pic %>" class="img-responsive">	
-									<% }} %>
+								<div class="profile-userpic" id="<%=h%>" style="width: 500px; height:400px;">	
+											<div id="<%= h %>"></div>	
 								</div>
 
 
@@ -179,6 +176,89 @@
     </div>
 </body>
 
+     <script>
+        function initAutocomplete(){
+            var dbuser = <%- JSON.stringify(dbuser) %>;
+            var dbdrive = <%- JSON.stringify(dbdrive) %>;
+                        
+            var bounds = new google.maps.LatLngBounds();
+            var markers = [];
+            var puLongLat, doLongLat;
+            var cu = 0;
+            
+            // Searching for Current user index location in user database
+            for(var i = 0; i < dbuser.length; i++){
+                if(dbuser[i]._id == "582552e6dcba0f326cc71a6e"){
+                    cu = i;
+                }
+            }
+            
+            // For every ride group user belongs to
+            for(var i=0; i < dbuser[cu].groups.length; i++){
+                
+                // Go through the entire drive database
+                for(var j=0; j <dbdrive.length; j++){
+                    // Find the group that user is in
+                    if(dbuser[cu].groups[i] == dbdrive[j]._id){
+                        // Get the pickup location lng and lat
+                        puLongLat = {lat: parseFloat(dbdrive[j].pickupLat), lng: parseFloat(dbdrive[j].pickupLong)};
+                        
+                        // Get the dropoff location lng and lat
+                        doLongLat = {lat: parseFloat(dbdrive[j].dropoffLat), lng: parseFloat(dbdrive[j].dropoffLong)};
+                    }
+                }
+
+                var map = new google.maps.Map(document.getElementById(i), {
+                zoom: 15,
+                mapTypeId: 'roadmap',
+                mapTypeControl: false,
+                scrollwheel: false
+                });
+
+                var pu_icon = {
+                      url: "http://maps.google.com/mapfiles/ms/icons/green.png",
+                      size: new google.maps.Size(71, 71),
+                      origin: new google.maps.Point(0, 0),
+                      anchor: new google.maps.Point(17, 34),
+                      scaledSize: new google.maps.Size(30, 30)
+                    };
+
+                var do_icon = {
+                      url: "http://maps.google.com/mapfiles/ms/icons/red.png",
+                      size: new google.maps.Size(71, 71),
+                      origin: new google.maps.Point(0, 0),
+                      anchor: new google.maps.Point(17, 34),
+                      scaledSize: new google.maps.Size(30, 30)
+                    };
+
+                    // Create a marker for each place.
+                var pu_marker = new google.maps.Marker({
+                  map: map,
+                  icon: pu_icon,
+                  title: "Pickup Location",
+                  position: puLongLat
+                });
+
+                var do_marker = new google.maps.Marker({
+                    map: map,
+                    icon: do_icon,
+                    title: "Drop Off Location",
+                    position: doLongLat
+                });
+
+                markers = [pu_marker, do_marker];
+
+
+                for (var c = 0; c < markers.length; c++) {
+                 bounds.extend(markers[c].getPosition());
+                }
+
+                map.fitBounds(bounds);
+            }
+        }
+    </script>
+    <!-- Google Map Api-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm_HyYv53RLUIrqJICXV736xFbliLqSVA&libraries=places&callback=initAutocomplete" async defer></script>
 
 
 </html>
