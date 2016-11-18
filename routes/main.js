@@ -22,7 +22,7 @@ exports.view = function(req, res, next) {
 				throw err;
 			}
 
-			models.user.find({uid}, function(err, dbuserdata){
+			models.user.find({_id: uid}, function(err, dbuserdata){
 				if (err){
 					throw err;
 				}
