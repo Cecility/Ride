@@ -27,11 +27,19 @@ exports.create = function(req,res,next){
 	    "groups": []
 	});
 
-	res.json(newUsers);
+
+	newUsers.save(afterSaving);
 
 
 
 	//res.sendStatus(200);
 	console.log("reached login route");
+
+
+	function afterSaving(err){ // this is a callback
+		if(err) {
+			console.log(err); res.send(500);
+		}
+	}
 
 }
