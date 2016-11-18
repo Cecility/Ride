@@ -29,7 +29,7 @@ exports.create = function(req, res, next){
             console.log("trying to set userExist");
 			if(userData[i].email == sess.email){
 				userExist = "1";
-                sess.id = userData[i]._id;
+                sess.uid = userData[i]._id;
                 console.log("user exists!");
 			}
 		}
@@ -68,7 +68,8 @@ exports.create = function(req, res, next){
             models.user.find({}, function(err, userData){
                 for(var i = 0; i < userData.length; i++){
                     if(userData[i].email == sess.email){
-                        sess.id = userData[i]._id;
+                        sess.uid = userData[i]._id.$oid;
+                        console.log('user id is '+ userData[i]._id + ' sees.uid is '+ sess.uid);
                     }
 		        }
 

@@ -20,8 +20,9 @@ exports.view = function(req, res, next) {
             
             // console.log('this is what dbuserdata loosk like ' + dbuserdata);
             var data;
-            // console.log("my session id is " + sess.id);
-            // console.log("my email is " + sess.email);
+            console.log("my session id is " + sess.uid);
+            console.log("my email is " + sess.email);
+
             for(var i = 0; i < dbuserdata.length; i++){
                 // console.log("I'm comparing " + dbuserdata[i].email);
                 if(dbuserdata[i].email == sess.email){
@@ -42,7 +43,7 @@ exports.create = function (req, res){
     var groupId = req.body.groupId;
     var currGroupId = [];
     
-    var userId = sess.id;
+    var userId = sess.uid;
     console.log('The id of the user is ' + userId);
     
     var currRidersId = [];
@@ -74,6 +75,7 @@ exports.create = function (req, res){
     });
     
     models.user.find({'_id': userId}, function(err, userData){
+        console.log('userId we are finding is ' + userId);
         // Check if userData is not empty, meaning user exists
         if (userData.length > 0){
             

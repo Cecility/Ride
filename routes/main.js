@@ -5,6 +5,7 @@ var sess;
 
 exports.view = function(req, res, next) {
 	sess = req.session;
+    var uid = sess.uid;
 	console.log("logged in? " + sess.loggedin);
 
 	console.log("logged in username is: " + sess.username);
@@ -21,10 +22,11 @@ exports.view = function(req, res, next) {
 				throw err;
 			}
 
-			models.user.find({}, function(err, dbuserdata){
+			models.user.find({_id: uid}, function(err, dbuserdata){
 				if (err){
 					throw err;
 				}
+                data = dbuserdata;
 
 	            var data;
 	            for(var i = 0; i < dbuserdata.length; i++){
