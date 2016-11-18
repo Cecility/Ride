@@ -2,7 +2,7 @@ var fs = require('fs');
 var models = require('../models');
 
 exports.view = function(req, res, next) {
-	// var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+	var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
 	// console.log(data)
 	// console.log('in');
 
