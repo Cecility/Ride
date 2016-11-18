@@ -57,27 +57,6 @@
         "username": "Hansol You",
         "email": "h5you@ucsd.edu",
         "driveid": "1234"
-      },
-      {
-        "username": "Michael Zhong",
-        "email": "m2zhong@ucsd.edu",
-        "driveid": "1234",
-        "time": "13.00"
-      },
-      {
-        "username": "Hansol You",
-        "email": "h5you@ucsd.edu",
-        "driveid": "0204"
-      },
-      {
-        "username": "Hansol You",
-        "email": "h5you@ucsd.edu",
-        "driveid": "0102"
-      },
-      {
-        "username": "Falcorg",
-        "email": "falcorg@ucsd.edu",
-        "driveid": "0103"
       }
     ],
   
@@ -91,56 +70,6 @@
         "dates": [1, 0, 1, 0, 1, 0, 0],
         "pickup": "Costa Verde",
         "dropoff": "Muir College"
-      },
-      {
-        "username": "Sir Winston",
-        "email": "swinston@ucsd.edu",
-        "driveid": "0420",
-        "seats": "4",
-        "time": "17:00",
-        "dates": [0, 1, 0, 1, 0, 0, 0],
-        "pickup": "UTC",
-        "dropoff": "Warren College"
-      },
-      {
-        "username": "Captain Americorg",
-        "email": "camericorg@ucsd.edu",
-        "driveid": "0204",
-        "seats": "4",
-        "time": "12:00",
-        "dates": [0, 1, 0, 1, 0, 0, 0],
-        "pickup": "UTC",
-        "dropoff": "Warren College"
-      },
-      {
-        "username": "Iron Corg",
-        "email": "icorg@ucsd.edu",
-        "driveid": "0102",
-        "seats": "2",
-        "time": "11:00",
-        "dates": [0, 0, 1, 0, 1, 0, 0],
-        "pickup": "La Regencia",
-        "dropoff": "ERC"
-      },
-      {
-        "username": "Thorgi",
-        "email": "thorgi@ucsd.edu",
-        "driveid": "0103",
-        "seats": "2",
-        "time": "11:00",
-        "dates": [0, 1, 0, 1, 0, 0, 0],
-        "pickup": "La Regencia",
-        "dropoff": "ERC"
-      },
-      {
-        "username": "Phil Corgson",
-        "email": "pcorgson@ucsd.edu",
-        "driveid": "0302",
-        "seats": "3",
-        "time": "12:00",
-        "dates": [0, 1, 0, 1, 0, 0, 0],
-        "pickup": "Muir College",
-        "dropoff": "Costa Verde"
       }
     ]
   }
