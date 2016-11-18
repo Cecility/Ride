@@ -7,6 +7,8 @@ exports.view = function(req, res, next) {
 var sess;
 exports.create = function(req, res, next){
 
+            console.log("called create");
+    
 	sess = req.session;
 	sess.loggedin = "1";
 	sess.username = req.body.username;
@@ -18,21 +20,22 @@ exports.create = function(req, res, next){
 		if (err){
 			throw err;
 		}
+    
 
 
 		var userExist = "0";
 
 		for(var i = 0; i < userData.length; i++){
+            console.log("trying to set userExist");
 			if(userData[i].email == sess.email){
 				userExist = "1";
+                sess.id = userData[i]._id;
+                console.log("user exists!");
 			}
 		}
 
 		if(userExist == "0"){
-			res.sendStatus(200);
-		}
-
-		else{
+            console.log('creating new user '+ sess.username);
 			var newUsers = new models.user({
 			    "username": sess.username,
 			    "email": sess.email,
@@ -45,6 +48,12 @@ exports.create = function(req, res, next){
 
 
 			newUsers.save(afterSaving);
+
+		}
+
+		else{
+            console.log('User exists. WE checked in controller');
+			res.sendStatus(200);
 		}
 
 
@@ -56,10 +65,16 @@ exports.create = function(req, res, next){
 			if(err) {
 				console.log(err); res.send(500);
 			}
+            models.user.find({}, function(err, userData){
+                for(var i = 0; i < userData.length; i++){
+                    if(userData[i].email == sess.email){
+                        sess.id = userData[i]._id;
+                    }
+		        }
 
 			res.redirect('/main');
-		}
+        });
+        }
 
-	});
-	
+	});	
 }
