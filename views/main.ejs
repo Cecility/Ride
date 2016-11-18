@@ -107,8 +107,7 @@
 
             	<!-- go through the whole ride database
             		if user's id == id of a rider...-->
-	            <%
-	            for(var h = 0; h < dbuser[cu].groups.length; h++ ){ 
+	            <% for(var h = 0; h < dbuser[cu].groups.length; h++ ){ 
 	            	for(var i = 0; i < dbdrive.length; i++ ){ 
 	    	        	if(dbuser[cu].groups[h] == dbdrive[i]._id){
 	    	        		if(dbuser[cu].username != dbdrive[i].username){ %>
@@ -124,7 +123,7 @@
 										<%= dbdrive[i].username %>
 									</div>
 								</div>
-	        	       			
+
 	        	       			<li> Leaving at: <%= dbdrive[i].time %> </li>
 	        	       			<li> Pick Up: <%= dbdrive[i].pickup %> </li>
 			        	       	<li> Drop Off: <%= dbdrive[i].dropoff %> </li>
