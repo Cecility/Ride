@@ -5,7 +5,11 @@ var sess;
 
 exports.view = function(req, res, next) {
 	sess = req.session;
+    var uid = sess.uid;
 	console.log("logged in? " + sess.loggedin);
+
+	console.log("logged in username is: " + sess.username);
+	console.log("logged in email is: " + sess.email);
 
 	if(sess.loggedin){
 		var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
@@ -18,20 +22,20 @@ exports.view = function(req, res, next) {
 				throw err;
 			}
 
-			models.user.find({}, function(err, dbuserdata){
+			models.user.find({_id: uid}, function(err, dbuserdata){
 				if (err){
 					throw err;
 				}
+                data = dbuserdata;
 
-				var data;
-	            
+	            var data;
 	            for(var i = 0; i < dbuserdata.length; i++){
 	                if(dbuserdata[i].email == sess.email){
 	                    data = dbuserdata[i];
 	                }
 	            }
 
-				res.render('mainA', {  userprofile: data , dbdrive: dbdrivedata, dbuser: dbuserdata });
+				res.render('mainA', { userprofile: data , dbdrive: dbdrivedata, dbuser: dbuserdata });
 			});
 		});
 	}
