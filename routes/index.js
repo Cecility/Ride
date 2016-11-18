@@ -14,11 +14,10 @@ exports.create = function(req, res, next){
 	sess.pic = req.body.pic;
 
 
-	models.users.find({}, function(err, userData){
+	models.user.find({}, function(err, userData){
 		if (err){
 			throw err;
 		}
-
 
 
 		var userExist = "0";
@@ -60,6 +59,6 @@ exports.create = function(req, res, next){
 
 			res.redirect('/main');
 		}
-		
+
 	}
 }
