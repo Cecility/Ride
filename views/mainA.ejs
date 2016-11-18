@@ -75,9 +75,6 @@
 						<li>
 							<a href="discoveryA"><span class="glyphicon glyphicon-globe"></span>Find a Ride</a>
 						</li>
-						<li>
-							<a href="settings"><span class="glyphicon glyphicon-cog"></span>Settings</a>
-						</li>
 					</ul>
 				</div>
 				<!-- END MENU -->
@@ -91,7 +88,7 @@
 		<div class="col-md-9">
             <div class="profile-content">
             	<h1 align="center"> These are your rides! </h1>
-            		<h3 align="center"><a class="btn" href="addGroup" style="background-color:powderblue;">Wanna drive?</a></h3>
+            		<h3 align="center"><a class="btn" href="addGroup" style="background-color:powderblue;">Add a Ride</a></h3>
 
 
 
@@ -132,6 +129,7 @@
 	        	       			<li> Leaving at: <%= dbdrive[i].time %> </li>
 	        	       			<li> Pick Up: <%= dbdrive[i].pickup %> </li>
 			        	       	<li> Drop Off: <%= dbdrive[i].dropoff %> </li>
+
 
 			                    <% for(var c = 0; c < dbdrive[i].dates.length; c++ ){
 			                        if(dbdrive[i].dates[c] == 1)
@@ -178,10 +176,15 @@
 	        			        	<% if(dbdrive[i].dates[5] == 1){ %>
 	        	        				Sat
 	        	        			<% } %>
+>>>>>>> 2cb45c012a4ece76cdce08f9eb899f80c4ea65f5
 
 			        	        	<% if(dbdrive[i].dates[6] == 1){ %>
 	        			        		Sun
-	        	    		    	<% } %>
+	        			        	<% --counter;
+	        			     		}
+	        			     		if (counter != 0){ %>
+	        			     			,
+	        			     		<% } %>
 	        	        		</li>
 
 	        				<hr>
