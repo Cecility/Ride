@@ -22,10 +22,11 @@ exports.view = function(req, res, next) {
             var data;
             console.log("my session id is " + sess.uid);
             console.log("my email is " + sess.email);
+
             for(var i = 0; i < dbuserdata.length; i++){
-                console.log("I'm comparing " + dbuserdata[i].email);
+                // console.log("I'm comparing " + dbuserdata[i].email);
                 if(dbuserdata[i].email == sess.email){
-                    console.log('im in here '+ sess.email);
+                    // console.log('im in here '+ sess.email);
                     data = dbuserdata[i];
                 }
             }
