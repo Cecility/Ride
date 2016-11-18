@@ -30,7 +30,7 @@ exports.view = function(req, res, next) {
                 }
             }
             
-            // console.log("data is " + data);
+            console.log("data is " + data);
             
             res.render('discoveryA', { userprofile: data , dbdrive: dbdrivedata, dbuser: dbuserdata });
         });
