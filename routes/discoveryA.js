@@ -7,6 +7,7 @@ exports.view = function(req, res, next) {
     //data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
     // console.log(data)
     // console.log('in');
+
     models.drive2.find({}, function(err, dbdrivedata){
         if (err){
             throw err;
@@ -29,7 +30,7 @@ exports.view = function(req, res, next) {
                 }
             }
             
-            // console.log("data is " + data);
+            console.log("data is " + data);
             
             res.render('discoveryA', { userprofile: data , dbdrive: dbdrivedata, dbuser: dbuserdata });
         });
