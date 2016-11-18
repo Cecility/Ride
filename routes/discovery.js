@@ -14,7 +14,7 @@ exports.view = function(req, res, next) {
 		}
 
 		models.user.find( {}, function(err, dbuserdata){
-			if (err){ß
+			if (err){
 				throw err;
 			}
             
@@ -26,7 +26,7 @@ exports.view = function(req, res, next) {
                 console.log("I'm comparing " + dbuserdata[i].email);
                 if(dbuserdata[i].email == sess.email){
                     console.log('im in here '+ sess.email);
-                    data == dbuserdata[i];
+                    data = dbuserdata[i];
                 }
             }
             
