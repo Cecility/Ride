@@ -60,5 +60,5 @@ exports.create = function(req, res, next){
 			res.redirect('/main');
 		}
 
-	}
+	})
 }
