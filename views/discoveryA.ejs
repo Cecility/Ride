@@ -60,9 +60,6 @@
 						<li class="active">
 							<a href="discoveryA"><span class="glyphicon glyphicon-globe"></span>Find a Ride</a>
 						</li>
-						<li>
-							<a href="settings"><span class="glyphicon glyphicon-cog"></span>Settings</a>
-						</li>
 					</ul>
 				</div>
 				<!-- END MENU -->
@@ -95,35 +92,59 @@
         	       	<li> Pick Up: <%= dbdrive[i].pickup %> </li>
         	       	<li> Drop Off: <%= dbdrive[i].dropoff %> </li>
 
+                    <% var counter = dbdrive[i].dates.length;
+                        console.log %>
 
         	     	<li> Rides on: 
         	        	<% if(dbdrive[i].dates[0] == 1){ %>
-        	        		Mon, 
-        	        	<% } %>
+        	        		Mon 
+                        <% --counter;
+                        
+                        if (counter > 0){ %>
+                            ,
+                        <% }} %>
 
         	        	<% if(dbdrive[i].dates[1] == 1){ %>
-        	        		Tue, 
-        	        	<% } %>
+        	        		Tue 
+                        <% --counter;
+                        if (counter > 0){ %>
+                            ,
+                        <% }} %>
 
         	        	<% if(dbdrive[i].dates[2] == 1){ %>
-        	        		Wed, 
-        	        	<% } %>
+        	        		Wed 
+                        <% --counter;
+                        if (counter > 0){ %>
+                            ,
+                        <% }} %>
 
         	        	<% if(dbdrive[i].dates[3] == 1){ %>
-        	        		Thu, 
-        	        	<% } %>
+        	        		Thu 
+                        <% --counter;
+                        if (counter > 0){ %>
+                            ,
+                        <% }} %>
 
         	        	<% if(dbdrive[i].dates[4] == 1){ %>
-        	        		Fri, 
-        	        	<% } %>
+        	        		Fri 
+                        <% --counter;
+                        if (counter > 0){ %>
+                            ,
+                        <% }} %>
 
         	        	<% if(dbdrive[i].dates[5] == 1){ %>
-        	        		Sat, 
-        	        	<% } %>
+        	        		Sat 
+                        <% --counter;
+                        if (counter > 0){ %>
+                            ,
+                        <% }} %>
                         
         	        	<% if(dbdrive[i].dates[6] == 1){ %>
         	        		Sun
-        	        	<% } %>
+                        <% --counter;
+                        if (counter > 0){ %>
+                            ,
+                        <% }} %>
         	        </li>
                     
                     <form action="/discovery/joinGroup" method="post">
