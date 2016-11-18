@@ -26,6 +26,13 @@ exports.view = function(req, res, next) {
 					throw err;
 				}
 
+	            var data;
+	            for(var i = 0; i < dbuserdata.length; i++){
+	                if(dbuserdata[i].email == sess.email){
+	                    data = dbuserdata[i];
+	                }
+	            }
+
 				res.render('main', { userprofile: data , dbdrive: dbdrivedata, dbuser: dbuserdata });
 			});
 		});

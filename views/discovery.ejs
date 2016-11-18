@@ -33,14 +33,14 @@
                 <div class="profile-sidebar">
                     <!-- SIDEBAR USERPIC -->
                     <div class="profile-userpic">
-                        <img src="<%= userprofile.users[0].pic %>" class="img-responsive">
+                        <img src="<%= userprofile.pic %>" class="img-responsive">
                     </div>
                     <!-- END SIDEBAR USERPIC -->
 
                     <!-- SIDEBAR USER TITLE -->
                     <div class="profile-usertitle">
                         <div class="profile-usertitle-name">
-                            <%= userprofile.users[0].username %>
+                            <%= userprofile.username %>
                         </div>
                     </div>
                     <!-- END SIDEBAR USER TITLE -->
@@ -78,8 +78,10 @@
 
                 <% for(var i = 0; i < dbdrive.length; i++ ){ %>
 
-                    <div id="discover-post-container">  
-                        <div id="<%=i%>" style="width: 500px; height:400px;"></div>    
+                    <div id="discover-post-container"> 
+                        <div class="map-container">
+                            <div id="<%=i%>" style="width: 100%; height:400px;"></div>
+                        </div>
 
                         <div class="profile-usertitle">
                             <div class="profile-usertitle-name">

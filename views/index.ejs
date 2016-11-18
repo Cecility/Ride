@@ -87,7 +87,7 @@
             if(currentUser.photoUrl != undefined)   
                 picUrl  = currentUser.photoUrl;
             else 
-                picUrl = "null";
+                picUrl = "https://ih1.redbubble.net/image.13322831.6235/flat,220x200,075,t.u3.jpg";
             domain = useremail.substring(0,useremail.lastIndexOf("@"));
                 
             console.log("User name is " + currentUser.displayName);    
@@ -113,12 +113,10 @@
               }
 
               $.post('/login', 
-                     {name: username, email: useremail, picture: picUrl}, function(data, status, xhr){
+                     {username: username, email: useremail, picture: picUrl}, function(data, status, xhr){
                           window.location.href = "main";
 
                       });
-
-              $.post('/index/login', {username: username, email: useremail, pic: picUrl} );
 
           });
                  
