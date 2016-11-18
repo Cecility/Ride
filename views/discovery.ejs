@@ -164,7 +164,7 @@
                   size: new google.maps.Size(71, 71),
                   origin: new google.maps.Point(0, 0),
                   anchor: new google.maps.Point(17, 34),
-                  scaledSize: new google.maps.Size(100, 100)
+                  scaledSize: new google.maps.Size(30, 30)
                 };
             
             var do_icon = {
@@ -172,7 +172,7 @@
                   size: new google.maps.Size(71, 71),
                   origin: new google.maps.Point(0, 0),
                   anchor: new google.maps.Point(17, 34),
-                  scaledSize: new google.maps.Size(100, 100)
+                  scaledSize: new google.maps.Size(30, 30)
                 };
             
             var puLongLat = {lat: parseFloat(dbdrive[i].pickupLat), lng: parseFloat(dbdrive[i].pickupLong)};
@@ -190,10 +190,23 @@
             
             var do_marker = new google.maps.Marker({
                 map: map,
-                icon: pu_icon,
+                icon: do_icon,
                 title: "Drop Off Location",
                 position: doLongLat
             });
+            
+            var LatLngList = [
+                     puLongLat, 
+                     doLongLat
+                 ],
+            latlngbounds = new google.maps.LatLngBounds();
+
+            LatLngList.forEach(function(latLng){
+               latlngbounds.extend(latLng);
+            });
+
+            map.setCenter(latlngbounds.getCenter());
+            map.fitBounds(latlngbounds); 
         }
     }
 </script>
