@@ -41,9 +41,9 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({secret:'1321corgis'}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret:'1321corgis'}));
 
 //app.use('/', routes);
 app.get('/', index.view);
@@ -56,9 +56,11 @@ app.get('/addGroup', addGroup.view);
 
 
 
+
 app.post('/addGroup', addGroup.create);
-app.post('/login', index.createUser);
+app.post('/login', index.create);
 app.post('/discovery/joinGroup', discovery.create);
+app.post('/index/login', index.create);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
