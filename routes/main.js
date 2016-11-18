@@ -7,8 +7,11 @@ exports.view = function(req, res, next) {
 	sess = req.session;
 	console.log("logged in? " + sess.loggedin);
 
+	console.log("logged in username is: " + sess.username);
+	console.log("logged in email is: " + sess.email);
+
 	if(sess.loggedin){
-		// var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+		var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
 		// console.log(data)
 		// console.log('in');
 
