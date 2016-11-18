@@ -2,19 +2,12 @@ exports.view = function(req, res, next) {
 	res.render('addGroup');
 };
 
-/*exports.addGroup = function(req, res) {
-		var location = {'pickupX': req.query.x, 'pickupY': req.query.y};
-
-	addGroup.drives.push(location);
-}
-*/
-
 var models = require('../models');
 
 
 
 exports.create = function(req, res){
-	var newDrive = new models.drive({
+	var newDrive = new models.drive2({
         "username": "Hansol You",
         "email": "h5you@ucsd.edu",
         "time": req.body.time,
@@ -29,23 +22,7 @@ exports.create = function(req, res){
 	});
 
 
-	//res.send(req.body.days);
-
-	//console.log(req.body.days);
-
-	//res.send(req.body);
-
 	console.log(req.body);
-
-// exports.create = function(req, res){
-// 	var newRide = new models.ride({
-//         "username": "Hansol You",
-//         "email": "h5you@ucsd.edu",
-//         "driveid": "1234"
-// 	});
-
-
-	//res.send(req.body.days);
 
 	newDrive.save(afterSaving);
 

@@ -7,7 +7,7 @@ exports.view = function(req, res, next) {
 	// console.log('in');
 
 
-	models.drive.find({}, function(err, dbdrivedata){
+	models.drive2.find({}, function(err, dbdrivedata){
 		if (err){
 			throw err;
 		}

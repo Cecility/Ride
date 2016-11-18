@@ -13,7 +13,7 @@ exports.view = function(req, res, next) {
 		// console.log('in');
 
 
-		models.drive.find({}, function(err, dbdrivedata){
+		models.drive2.find({}, function(err, dbdrivedata){
 			if (err){
 				throw err;
 			}
@@ -33,17 +33,3 @@ exports.view = function(req, res, next) {
 	}
 
 };
-
-
-//exports.view = function(req, res){
-	/*models.createRide
-		.find()
-		.sort('-time')
-		.exec(displayRide);
-
-		function displayRide(err, list_rides){
-		}*/
-
-//		res.send(models.createRide);
-
-//}
