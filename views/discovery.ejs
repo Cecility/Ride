@@ -148,10 +148,10 @@
 
 <script>
     function initAutocomplete(){
-        var dbdrive = <%- dbdrive %>;
+        var dbdrive = <%- JSON.stringify(dbdrive) %>;
         for(i=0; i<dbdrive.length; i++){
             
-            console.log('dbdrive looks like ' + JSON.stringify(dbdrive[1]);
+            console.log('dbdrive looks like ' + JSON.stringify(dbdrive[1]));
             var map = new google.maps.Map(document.getElementById(i), {
             center: {lat: 32.880376, lng: -117.235065},
             zoom: 15,
@@ -175,22 +175,23 @@
                   scaledSize: new google.maps.Size(100, 100)
                 };
             
-            var puLongLat = {lat: dbdrive[i].pickupLat, long: dbdrive[i].pickupLong};
+            var puLongLat = {lat: parseFloat(dbdrive[i].pickupLat), lng: parseFloat(dbdrive[i].pickupLong)};
+            console.log('pick up latt long looks like '+JSON.stringify(puLongLat));
             
-            var doLongLat = {lat: dbdrive[i].dropoffLat, long: dbdrive[i].dropoffLong};
+            var doLongLat = {lat: parseFloat(dbdrive[i].dropoffLat), lng: parseFloat(dbdrive[i].dropoffLong)};
             
                 // Create a marker for each place.
             var pu_marker = new google.maps.Marker({
               map: map,
               icon: pu_icon,
-              title: place.name,
+              title: "Pickup Location",
               position: puLongLat
             });
             
             var do_marker = new google.maps.Marker({
                 map: map,
                 icon: pu_icon,
-                title: place.name,
+                title: "Drop Off Location",
                 position: doLongLat
             });
         }
