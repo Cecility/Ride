@@ -76,7 +76,8 @@
 
             	<h1 align="center"> Sign up for rides! </h1>
                 
-            <% for(var i = 0; i < dbdrive.length; i++ ){ %>
+            <% var counter = 0;
+            for(var i = 0; i < dbdrive.length; i++ ){ %>
                 
                 <div id="discover-post-container">  
                     <div class="row" id="<%=i%>" style="width: 500px; height:400px; display: block; text-align: center;"></div>    
@@ -91,31 +92,55 @@
         	       	<li> Pick Up: <%= dbdrive[i].pickup %> </li>
         	       	<li> Drop Off: <%= dbdrive[i].dropoff %> </li>
 
+                    <% for(var c = 0; c < dbdrive[i].dates.length; c++ ){
+                        if(dbdrive[i].dates[c] == 1)
+                            counter = counter + 1;
+                    }%>
+
+                    <script>console.log("counter is " + <%-counter %>);</script>
 
         	     	<li> Rides on: 
         	        	<% if(dbdrive[i].dates[0] == 1){ %>
-        	        		Mon, 
-        	        	<% } %>
+        	        		Mon
+                        <%    --counter;
+                            if(counter > 0){ %>
+                            , 
+                        <% }} %>
 
         	        	<% if(dbdrive[i].dates[1] == 1){ %>
-        	        		Tue, 
-        	        	<% } %>
+        	        		Tue
+                        <%    --counter;
+                            if(counter > 0){ %>
+                            , 
+                        <% }} %>
 
         	        	<% if(dbdrive[i].dates[2] == 1){ %>
-        	        		Wed, 
-        	        	<% } %>
+        	        		Wed
+                        <%    --counter;
+                            if(counter > 0){ %>
+                            , 
+                        <% }} %>
 
         	        	<% if(dbdrive[i].dates[3] == 1){ %>
-        	        		Thu, 
-        	        	<% } %>
+        	        		Thu
+                        <%    --counter;
+                            if(counter > 0){ %>
+                            , 
+                        <% }} %>
 
         	        	<% if(dbdrive[i].dates[4] == 1){ %>
-        	        		Fri, 
-        	        	<% } %>
+        	        		Fri
+                        <%    --counter;
+                            if(counter > 0){ %>
+                            , 
+                        <% }} %>
 
         	        	<% if(dbdrive[i].dates[5] == 1){ %>
-        	        		Sat, 
-        	        	<% } %>
+        	        		Sat
+                        <%    --counter;
+                            if(counter > 0){ %>
+                            , 
+                        <% }} %>
                         
         	        	<% if(dbdrive[i].dates[6] == 1){ %>
         	        		Sun
@@ -138,7 +163,7 @@
             </div>
 		</div>
         
-    
+        </div>
     </div>
 </body>
 
