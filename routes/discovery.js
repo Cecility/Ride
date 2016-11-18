@@ -28,7 +28,7 @@ exports.create = function (req, res){
     var userId = "582552e6dcba0f326cc71a6e";
     var currRidersId = [];
     
-    models.drive.find({'_id':groupId}, function(err, userData){
+    models.drive2.find({'_id':groupId}, function(err, userData){
        
         if(userData.length>0){
             for(var i=0; i<userData[0].riders.length; i++){
@@ -44,7 +44,7 @@ exports.create = function (req, res){
             else
                 console.log(userId + " already exist");
             
-            models.drive.find({'_id':groupId}).update({'riders':currRidersId}).exec(function(){console.log("Added rider id");});
+            models.drive2.find({'_id':groupId}).update({'riders':currRidersId}).exec(function(){console.log("Added rider id");});
         }
         
         else{
