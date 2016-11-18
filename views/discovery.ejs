@@ -175,9 +175,10 @@
                   scaledSize: new google.maps.Size(100, 100)
                 };
             
-            var puLongLat = {lat: dbdrive[i].pickupLat, long: dbdrive[i].pickupLong};
+            var puLongLat = {lat: parseFloat(dbdrive[i].pickupLat), lng: parseFloat(dbdrive[i].pickupLong)};
+            console.log('pick up latt long looks like '+JSON.stringify(puLongLat));
             
-            var doLongLat = {lat: dbdrive[i].dropoffLat, long: dbdrive[i].dropoffLong};
+            var doLongLat = {lat: parseFloat(dbdrive[i].dropoffLat), lng: parseFloat(dbdrive[i].dropoffLong)};
             
                 // Create a marker for each place.
             var pu_marker = new google.maps.Marker({
