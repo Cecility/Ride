@@ -89,15 +89,17 @@
             else 
                 picUrl = "null";
             domain = useremail.substring(0,useremail.lastIndexOf("@"));
+            
                 
-            console.log("User name is " + currentUser.displayName);    
+            console.log("Current User looks like " + JSON.stringify(currentUser));    
             console.log("user mail is " + useremail);
             console.log("userpicUrl is " + picUrl);
             console.log("user id is " + uid);
             console.log("domain is " + domain);
                 
-                
-            firebase.database().ref("users").once('value', function(snapshot){
+              
+        // Checking to see if new user or returning user    
+           /** firebase.database().ref("users").once('value', function(snapshot){
               if(!snapshot.hasChild(domain)){
                   firebase.database().ref("users/" + domain).set({
                       name: username,
@@ -118,7 +120,7 @@
 
                       });
 
-          });
+          }); **/
                  
                 
           }
