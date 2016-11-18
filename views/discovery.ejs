@@ -145,24 +145,57 @@
     
     </div>
 </body>
-    
 
-    
 <script>
     function initAutocomplete(){
-        var dbdrive = <%- JSON.stringify(dbdrive) %>;
+        var dbdrive = <%- dbdrive %>;
         for(i=0; i<dbdrive.length; i++){
-            console.log('dbdrive looks like ' + dbdrive[1]);
+            
+            console.log('dbdrive looks like ' + JSON.stringify(dbdrive[1]);
             var map = new google.maps.Map(document.getElementById(i), {
             center: {lat: 32.880376, lng: -117.235065},
-            zoom: 13,
+            zoom: 15,
             mapTypeId: 'roadmap',
             mapTypeControl: false,
+            });
+            
+            var pu_icon = {
+                  url: "http://maps.google.com/mapfiles/ms/icons/green.png",
+                  size: new google.maps.Size(71, 71),
+                  origin: new google.maps.Point(0, 0),
+                  anchor: new google.maps.Point(17, 34),
+                  scaledSize: new google.maps.Size(100, 100)
+                };
+            
+            var do_icon = {
+                  url: "http://maps.google.com/mapfiles/ms/icons/red.png",
+                  size: new google.maps.Size(71, 71),
+                  origin: new google.maps.Point(0, 0),
+                  anchor: new google.maps.Point(17, 34),
+                  scaledSize: new google.maps.Size(100, 100)
+                };
+            
+            var puLongLat = {lat: dbdrive[i].pickupLat, long: dbdrive[i].pickupLong};
+            
+            var doLongLat = {lat: dbdrive[i].dropoffLat, long: dbdrive[i].dropoffLong};
+            
+                // Create a marker for each place.
+            var pu_marker = new google.maps.Marker({
+              map: map,
+              icon: pu_icon,
+              title: place.name,
+              position: puLongLat
+            });
+            
+            var do_marker = new google.maps.Marker({
+                map: map,
+                icon: pu_icon,
+                title: place.name,
+                position: doLongLat
             });
         }
     }
 </script>
-    
 <!-- Google Map Api-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm_HyYv53RLUIrqJICXV736xFbliLqSVA&libraries=places&callback=initAutocomplete" async defer></script>
 
