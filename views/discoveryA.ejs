@@ -79,17 +79,13 @@
             <% for(var i = 0; i < dbdrive.length; i++ ){ %>
                 
                 <div id="discover-post-container">  
+                    <div class="row" id="<%=i%>" style="width: 500px; height:400px; display: block; text-align: center;"></div>    
 
-                    <div id="<%=i%>" style="width: 500px; height:400px; display: block; text-align: center;"></div>    
-                </div>
-               
-
-
-					<div class="profile-usertitle">
-						<div class="profile-usertitle-name">
-							<%= dbdrive[i].username %>
-						</div>
-					</div>
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            <%= dbdrive[i].username %>
+                        </div>
+                    </div>
                 
         	       	<li> Leaving at: <%= dbdrive[i].time %> </li>
         	       	<li> Pick Up: <%= dbdrive[i].pickup %> </li>
