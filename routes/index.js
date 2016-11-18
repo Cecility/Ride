@@ -22,7 +22,7 @@ exports.create = function(req, res, next){
 
 		var userExist = "0";
 
-		for(var i = 0; i < users.length; i++){
+		for(var i = 0; i < userData.length; i++){
 			if(userData[i].email == sess.email){
 				userExist = "1";
 			}
@@ -33,7 +33,7 @@ exports.create = function(req, res, next){
 		}
 
 		else{
-			var newUsers = new models.users({
+			var newUsers = new models.user({
 			    "username": sess.username,
 			    "email": sess.email,
 			    "pic": sess.pic,
@@ -60,5 +60,5 @@ exports.create = function(req, res, next){
 			res.redirect('/main');
 		}
 
-	})
+	});
 }
