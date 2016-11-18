@@ -23,7 +23,7 @@ exports.view = function(req, res, next) {
 					throw err;
 				}
 
-				res.render('mainA', { userprofile: data , dbdrive: dbdrivedata, dbuser: dbuserdata });
+				res.render('mainA', {  userprofile: data , dbdrive: dbdrivedata, dbuser: dbuserdata });
 			});
 		});
 	}
