@@ -2,17 +2,6 @@
 var mongoose = require('mongoose');
 
 
-/*var userSchema = new mongoose.Schema({
-  // fields are defined here
-  name: String,
-  email: String,
-  pic: String
-});*/
-
-//exports.Project = Mongoose.model('user', userSchema);
-
-//var user = mongoose.model('user', userSchema);
-
 var userSchema = new mongoose.Schema({
     "username": String,
     "email": String,
@@ -46,8 +35,25 @@ var driveSchema = new mongoose.Schema({
 	collection: "drives"
 });
 
+var driveSchema2 = new mongoose.Schema({
+    "username": String,
+    "email": String,
+    "time": String,
+    "dates": [Number],
+    "pickup": String,
+    "pickupLong": String,
+    "pickupLat": String,
+    "dropoff": String,
+    "dropoffLong": String,
+    "dropoffLat": String,
+    "riders": [String]
+    }, {
+    collection: "drives2"
+});
+
 
 
 exports.user = mongoose.model('users', userSchema);
 exports.ride = mongoose.model('rides', rideSchema);
 exports.drive = mongoose.model('drives', driveSchema);
+exports.drive2 = mongoose.model('drives2', driveSchema2);
