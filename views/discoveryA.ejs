@@ -60,6 +60,9 @@
 						<li class="active">
 							<a href="discoveryA"><span class="glyphicon glyphicon-globe"></span>Find a Ride</a>
 						</li>
+						<li>
+							<a href="settings"><span class="glyphicon glyphicon-cog"></span>Settings</a>
+						</li>
 					</ul>
 				</div>
 				<!-- END MENU -->
@@ -73,78 +76,75 @@
 
             	<h1 align="center"> Sign up for rides! </h1>
                 
-            <% for(var i = 0; i < dbdrive.length; i++ ){ %>
+            <% var counter = 0;
+            for(var i = 0; i < dbdrive.length; i++ ){ %>
                 
                 <div id="discover-post-container">  
+                    <div class="row" id="<%=i%>" style="width: 500px; height:400px; display: block; text-align: center;"></div>    
 
-                    <div id="<%=i%>" style="width: 500px; height:400px; display: block; text-align: center;"></div>    
-                </div>
-               
-
-
-					<div class="profile-usertitle">
-						<div class="profile-usertitle-name">
-							<%= dbdrive[i].username %>
-						</div>
-					</div>
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            <%= dbdrive[i].username %>
+                        </div>
+                    </div>
                 
         	       	<li> Leaving at: <%= dbdrive[i].time %> </li>
         	       	<li> Pick Up: <%= dbdrive[i].pickup %> </li>
         	       	<li> Drop Off: <%= dbdrive[i].dropoff %> </li>
 
-                    <% var counter = dbdrive[i].dates.length;
-                        console.log %>
+                    <% for(var c = 0; c < dbdrive[i].dates.length; c++ ){
+                        if(dbdrive[i].dates[c] == 1)
+                            counter = counter + 1;
+                    }%>
+
+                    <script>console.log("counter is " + <%-counter %>);</script>
 
         	     	<li> Rides on: 
         	        	<% if(dbdrive[i].dates[0] == 1){ %>
-        	        		Mon 
-                        <% --counter;
-                        
-                        if (counter > 0){ %>
-                            ,
+        	        		Mon
+                        <%    --counter;
+                            if(counter > 0){ %>
+                            , 
                         <% }} %>
 
         	        	<% if(dbdrive[i].dates[1] == 1){ %>
-        	        		Tue 
-                        <% --counter;
-                        if (counter > 0){ %>
-                            ,
+        	        		Tue
+                        <%    --counter;
+                            if(counter > 0){ %>
+                            , 
                         <% }} %>
 
         	        	<% if(dbdrive[i].dates[2] == 1){ %>
-        	        		Wed 
-                        <% --counter;
-                        if (counter > 0){ %>
-                            ,
+        	        		Wed
+                        <%    --counter;
+                            if(counter > 0){ %>
+                            , 
                         <% }} %>
 
         	        	<% if(dbdrive[i].dates[3] == 1){ %>
-        	        		Thu 
-                        <% --counter;
-                        if (counter > 0){ %>
-                            ,
+        	        		Thu
+                        <%    --counter;
+                            if(counter > 0){ %>
+                            , 
                         <% }} %>
 
         	        	<% if(dbdrive[i].dates[4] == 1){ %>
-        	        		Fri 
-                        <% --counter;
-                        if (counter > 0){ %>
-                            ,
+        	        		Fri
+                        <%    --counter;
+                            if(counter > 0){ %>
+                            , 
                         <% }} %>
 
         	        	<% if(dbdrive[i].dates[5] == 1){ %>
-        	        		Sat 
-                        <% --counter;
-                        if (counter > 0){ %>
-                            ,
+        	        		Sat
+                        <%    --counter;
+                            if(counter > 0){ %>
+                            , 
                         <% }} %>
                         
         	        	<% if(dbdrive[i].dates[6] == 1){ %>
         	        		Sun
-                        <% --counter;
-                        if (counter > 0){ %>
-                            ,
-                        <% }} %>
+        	        	<% } %>
         	        </li>
                     
                     <form action="/discovery/joinGroup" method="post">
@@ -163,7 +163,7 @@
             </div>
 		</div>
         
-    
+        </div>
     </div>
 </body>
 

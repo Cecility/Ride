@@ -104,7 +104,7 @@
 
             	<!-- go through the whole ride database
             		if user's id == id of a rider...-->
-	            <%
+	            <% var counter = 0;
 	            for(var h = 0; h < dbuser[cu].groups.length; h++ ){ 
 	            	for(var i = 0; i < dbdrive.length; i++ ){ 
 	    	        	if(dbuser[cu].groups[h] == dbdrive[i]._id){
@@ -130,56 +130,53 @@
 	        	       			<li> Pick Up: <%= dbdrive[i].pickup %> </li>
 			        	       	<li> Drop Off: <%= dbdrive[i].dropoff %> </li>
 
-			        	       	<% var counter = dbdrive[i].dates.length; %>
 
+			                    <% for(var c = 0; c < dbdrive[i].dates.length; c++ ){
+			                        if(dbdrive[i].dates[c] == 1)
+			                            counter = counter + 1;
+			                    }%>
+
+	        
 	        			     	<li> Rides on: 
 	        	    		    	<% if(dbdrive[i].dates[0] == 1){ %>
-			        	        		Mon 
-	        			        	<% --counter;
-	        			     		}
-	        			     		if (counter != 0){ %>
-	        			     			,
-	        			     		<% } %>
+			        	        		Mon
+			                        <%    --counter;
+			                            if(counter > 0){ %>
+			                            , 
+			                        <% }} %>
 
 	        	    		    	<% if(dbdrive[i].dates[1] == 1){ %>
-	        	        				Tue 
-	        			        	<% --counter;
-	        			     		}
-	        			     		if (counter != 0){ %>
-	        			     			,
-	        			     		<% } %>
+	        	        				Tue
+			                        <%    --counter;
+			                            if(counter > 0){ %>
+			                            , 
+			                        <% }} %>
 
 	        			        	<% if(dbdrive[i].dates[2] == 1){ %>
-	        	    		    		Wed 
-	        			        	<% --counter;
-	        			     		}
-	        			     		if (counter != 0){ %>
-	        			     			,
-	        			     		<% } %>
+	        	    		    		Wed
+			                        <%    --counter;
+			                            if(counter > 0){ %>
+			                            , 
+			                        <% }} %>
 
 			        	        	<% if(dbdrive[i].dates[3] == 1){ %>
-	        			        		Thu 
-	        			        	<% --counter;
-	        			     		}
-	        			     		if (counter != 0){ %>
-	        			     			,
-	        			     		<% } %>
+	        			        		Thu
+			                        <%    --counter;
+			                            if(counter > 0){ %>
+			                            , 
+			                        <% }} %>
 
 	        	        			<% if(dbdrive[i].dates[4] == 1){ %>
-	        	        				Fri 
-	        			        	<% --counter;
-	        			     		}
-	        			     		if (counter != 0){ %>
-	        			     			,
-	        			     		<% } %>
+	        	        				Fri
+			                        <%    --counter;
+			                            if(counter > 0){ %>
+			                            , 
+			                        <% }} %>
 
 	        			        	<% if(dbdrive[i].dates[5] == 1){ %>
-	        	        				Sat 
-	        			        	<% --counter;
-	        			     		}
-	        			     		if (counter != 0){ %>
-	        			     			,
-	        			     		<% } %>
+	        	        				Sat
+	        	        			<% } %>
+>>>>>>> 2cb45c012a4ece76cdce08f9eb899f80c4ea65f5
 
 			        	        	<% if(dbdrive[i].dates[6] == 1){ %>
 	        			        		Sun
