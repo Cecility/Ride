@@ -297,6 +297,12 @@ form{
     display: none;
 }
 
+.map-container{
+    width: 100%;
+    text-align: center;
+    align-content: center;
+}
+
 /* The Close Button */
 .close {
     color: #aaaaaa;
