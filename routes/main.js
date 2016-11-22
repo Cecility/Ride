@@ -12,7 +12,7 @@ exports.view = function(req, res, next) {
 	console.log("logged in email is: " + sess.email);
 
 	if(sess.loggedin){
-		var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+		var data2 = JSON.parse(fs.readFileSync('data.json', 'utf8'));
 		// console.log(data)
 		// console.log('in');
 
@@ -35,7 +35,7 @@ exports.view = function(req, res, next) {
 	                }
 	            }
 
-				res.render('main', { userprofile: data , dbdrive: dbdrivedata, dbuser: dbuserdata });
+				res.render('main', { userprofile: data , dbdrive: dbdrivedata, dbuser: dbuserdata, userprofile2: data2 });
 			});
 		});
 	}
@@ -55,7 +55,7 @@ exports.view2 = function(req, res, next) {
 	console.log("logged in email is: " + sess.email);
 
 	if(sess.loggedin){
-		var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+		var data2 = JSON.parse(fs.readFileSync('data.json', 'utf8'));
 		// console.log(data)
 		// console.log('in');
 
@@ -78,7 +78,7 @@ exports.view2 = function(req, res, next) {
 	                }
 	            }
 
-				res.render('mainA', { userprofile: data , dbdrive: dbdrivedata, dbuser: dbuserdata });
+				res.render('mainA', { userprofile: data , dbdrive: dbdrivedata, dbuser: dbuserdata, userprofile2: data2 });
 			});
 		});
 	}
