@@ -70,10 +70,10 @@
 				<div class="profile-usermenu">
 					<ul class="nav">
 						<li class="active">
-							<a href="mainA"><span class="glyphicon glyphicon-user"></span>My Groups</a>
+							<a href="mainA" id="myGroupsTab" ><span class="glyphicon glyphicon-user"></span>My Groups</a>
 						</li>
 						<li>
-							<a href="discoveryA"><span class="glyphicon glyphicon-globe"></span>Join a Ride</a>
+							<a href="discoveryA" id="discoveryTab"><span class="glyphicon glyphicon-globe"></span>Join a Ride</a>
 						</li>
 					</ul>
 				</div>
@@ -202,6 +202,8 @@
 
             ga('create', 'UA-87713588-1', 'auto');
             ga('send', 'pageview');
+            ga('send', 'event', 'myGroupsTab', 'myGroups');
+            ga('send', 'event', 'discoveryTab', 'discovery');
 
         </script>
 </body>

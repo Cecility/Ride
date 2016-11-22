@@ -12,7 +12,7 @@ var discovery = require('./routes/discovery');
 var discoveryA = require('./routes/discoveryA');
 var index = require('./routes/index');
 var main = require('./routes/main');
-var mainA = require('./routes/mainA');
+var mainA = require('./routes/main');
 var settings = require('./routes/settings');
 var addGroup = require('./routes/addGroup');
 
@@ -48,7 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/', routes);
 app.get('/', index.view);
 app.get('/main', main.view);
-app.get('/mainA', mainA.view);
+app.get('/mainA', main.view2);
 app.get('/discovery', discovery.view);
 app.get('/discoveryA', discoveryA.view);
 app.get('/settings', settings.view);
