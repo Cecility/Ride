@@ -38,6 +38,42 @@ exports.view = function(req, res, next) {
 	});
 };
 
+exports.view2 = function(req, res, next) {
+    sess = req.session;
+    
+    //data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+    // console.log(data)
+    // console.log('in');
+
+    models.drive2.find({}, function(err, dbdrivedata){
+        if (err){
+            throw err;
+        }
+
+        models.user.find( {}, function(err, dbuserdata){
+            if (err){
+                throw err;
+            }
+            
+            // console.log('this is what dbuserdata loosk like ' + dbuserdata);
+            var data;
+            // console.log("my session id is " + sess.id);
+            // console.log("my email is " + sess.email);
+            for(var i = 0; i < dbuserdata.length; i++){
+                // console.log("I'm comparing " + dbuserdata[i].email);
+                if(dbuserdata[i].email == sess.email){
+                    // console.log('im in here '+ sess.email);
+                    data = dbuserdata[i];
+                }
+            }
+            
+            console.log("data is " + data);
+            
+            res.render('discoveryA', { userprofile: data , dbdrive: dbdrivedata, dbuser: dbuserdata });
+        });
+    });
+};
+
 exports.create = function (req, res){
     sess = req.session;
     var groupId = req.body.groupId;

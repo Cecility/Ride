@@ -9,7 +9,7 @@ var session = require('express-session');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var discovery = require('./routes/discovery');
-var discoveryA = require('./routes/discoveryA');
+var discoveryA = require('./routes/discovery');
 var index = require('./routes/index');
 var main = require('./routes/main');
 var mainA = require('./routes/main');
@@ -50,7 +50,7 @@ app.get('/', index.view);
 app.get('/main', main.view);
 app.get('/mainA', main.view2);
 app.get('/discovery', discovery.view);
-app.get('/discoveryA', discoveryA.view);
+app.get('/discoveryA', discovery.view2);
 app.get('/settings', settings.view);
 app.get('/addGroup', addGroup.view);
 
