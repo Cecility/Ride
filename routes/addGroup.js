@@ -1,3 +1,4 @@
+var sess;
 exports.view = function(req, res, next) {
 	res.render('addGroup');
 };
@@ -7,9 +8,10 @@ var models = require('../models');
 
 
 exports.create = function(req, res){
+	    sess = req.session;
 	var newDrive = new models.drive2({
-        "username": "Hansol You",
-        "email": "h5you@ucsd.edu",
+        "username": sess.username,
+        "email": sess.email,
         "time": req.body.time,
         "dates": req.body.dates,
         "pickup": req.body.pickup,
