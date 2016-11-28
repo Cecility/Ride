@@ -147,6 +147,16 @@
 	        			        		Sun
 	        	    		    	<% } %>
 	        	        		</li>
+                
+                        <form action="/main/leaveGroup" method="post">
+                            <lable>
+                                <input type="text" id="groupId-form" name="groupId" value="<%=dbdrive[i]._id%>">
+                            </lable>
+
+                            <div class="col-md-4 text-center" id="leave-btn-container">
+                                <input type="submit" id="leave-btn" class="btn btn-danger" value="Leave Group">
+                            </div>
+                        </form>
 	        				<hr>
 	    				<% }
 	    			}
