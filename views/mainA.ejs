@@ -48,7 +48,7 @@
 			<div class="profile-sidebar">
 				<!-- SIDEBAR USERPIC -->
 				<div class="profile-userpic">
-					<img src="<%= userprofile.pic %>" class="img-responsive">
+					<img src="https://ih1.redbubble.net/image.13322831.6235/flat,220x200,075,t.u3.jpg" class="img-responsive">
 				</div>
 				<!-- END SIDEBAR USERPIC -->
 
@@ -70,10 +70,10 @@
 				<div class="profile-usermenu">
 					<ul class="nav">
 						<li class="active">
-							<a href="mainA"><span class="glyphicon glyphicon-user"></span>My Groups</a>
+							<a href="mainA" id="myGroupsTab" ><span class="glyphicon glyphicon-user"></span>My Groups</a>
 						</li>
 						<li>
-							<a href="discoveryA"><span class="glyphicon glyphicon-globe"></span>Join a Ride</a>
+							<a href="discoveryA" id="discoveryTab"><span class="glyphicon glyphicon-globe"></span>Join a Ride</a>
 						</li>
 					</ul>
 				</div>
@@ -102,7 +102,7 @@
 
 
 
-            	<!-- go through the whole ride database
+            	<!-- go through the zwhole ride database
             		if user's id == id of a rider...-->
 	            <% var counter = 0;
 	            for(var h = 0; h < dbuser[cu].groups.length; h++ ){ 
@@ -110,85 +110,78 @@
 	    	        	if(dbuser[cu].groups[h] == dbdrive[i]._id){
 	    	        		if(dbuser[cu].username != dbdrive[i].username){ %>
 								<!-- getting driver's pic -->
-								<div class="profile-userpic" id="<%=h%>" style="width: 500px; height:400px;">	
-											<div id="<%= h %>"></div>	
+                
+                
+								<div class="map-container">	
+								    <div id="<%=h%>" style="width: 100%; height:400px;"></div>	
 								</div>
-
-
-
-
+                
 								<div class="profile-usertitle">
 									<div class="profile-usertitle-name">
 										<%= dbdrive[i].username %>
 									</div>
 								</div>
+
+
+								<% for(var c = 0; c < dbdrive[i].dates.length; c++){
+									if(dbdrive[i].dates[c] == 1){
+										counter = counter + 1;
+									}
+								}
+								%>
+
 	        	       			
 	        	       			<li> Leaving at: <%= dbdrive[i].time %> </li>
 	        	       			<li> Pick Up: <%= dbdrive[i].pickup %> </li>
 			        	       	<li> Drop Off: <%= dbdrive[i].dropoff %> </li>
-
-
-			        	       	<% for(var c = 0; c < dbdrive[i].dates.length; c++){
-			        	       		if(dbdrive[i].dates[c] == 1){
-			        	       			++counter;
-			        	       		}
-			        	       	}%>
-
-
-
-
 	        			     	<li> Rides on: 
-	        	    		    	<% if(dbdrive[i].dates[0] == 1){ %>
+	        	    		    	<% if(dbdrive[i].dates[0] == 1){ 
+	        	    		    		--counter %>
 			        	        		Mon
-			                        <%    --counter;
-			                            if(counter > 0){ %>
-			                            , 
-			                        <% }} %>
+	        			        	<% 	if(counter > 0){ %>
+	        			        			, 
+	        			        	<% }} %>
 
-	        	    		    	<% if(dbdrive[i].dates[1] == 1){ %>
+	        	    		    	<% if(dbdrive[i].dates[1] == 1){
+	        	    		    		--counter %>
 	        	        				Tue
-			                        <%    --counter;
-			                            if(counter > 0){ %>
-			                            , 
-			                        <% }} %>
+	        			        	<% 	if(counter > 0){ %>
+	        			        			, 
+	        			        	<% }} %>
 
-	        			        	<% if(dbdrive[i].dates[2] == 1){ %>
+	        			        	<% if(dbdrive[i].dates[2] == 1){ 
+	        			        		--counter; %>
 	        	    		    		Wed
-			                        <%    --counter;
-			                            if(counter > 0){ %>
-			                            , 
-			                        <% }} %>
+	        			        	<% 	if(counter > 0){ %>
+	        			        			, 
+	        			        	<% }} %>
 
-			        	        	<% if(dbdrive[i].dates[3] == 1){ %>
+			        	        	<% if(dbdrive[i].dates[3] == 1){ 
+			        	        		--counter; %>
 	        			        		Thu
-			                        <%    --counter;
-			                            if(counter > 0){ %>
-			                            , 
-			                        <% }} %>
+	        			        	<% 	if(counter > 0){ %>
+	        			        			, 
+	        			        	<% }} %>
 
-	        	        			<% if(dbdrive[i].dates[4] == 1){ %>
+	        	        			<% if(dbdrive[i].dates[4] == 1){
+	        	        				--counter; %>
 	        	        				Fri
-			                        <%    --counter;
-			                            if(counter > 0){ %>
-			                            , 
-			                        <% }} %>
+	        			        	<% 	if(counter > 0){ %>
+	        			        			, 
+	        			        	<% }} %>
 
-	        			        	<% if(dbdrive[i].dates[5] == 1){ %>
+	        			        	<% if(dbdrive[i].dates[5] == 1){ 
+	        			        		--counter;%>
 	        	        				Sat
-			                        <%    --counter;
-			                            if(counter > 0){ %>
-			                            , 
-			                        <% }} %>
-
-
+	        			        	<% 	if(counter > 0){ %>
+	        			        			, 
+	        			        	<% }} %>
+	        			        	
 			        	        	<% if(dbdrive[i].dates[6] == 1){ %>
 	        			        		Sun
-	        			     		<% } %>
+	        	    		    	<% } %>
 	        	        		</li>
-
-
 	        				<hr>
-
 	    				<% }
 	    			}
 	    		}
@@ -201,6 +194,17 @@
 
 	</div>
     </div>
+    <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-87713588-1', 'auto');
+            ga('send', 'pageview');
+            ga('send', 'event', 'mainAPage', 'clickmA');
+
+        </script>
 </body>
 
      <script>
@@ -234,14 +238,12 @@
                         doLongLat = {lat: parseFloat(dbdrive[j].dropoffLat), lng: parseFloat(dbdrive[j].dropoffLong)};
                     }
                 }
-
                 var map = new google.maps.Map(document.getElementById(i), {
                 zoom: 15,
                 mapTypeId: 'roadmap',
                 mapTypeControl: false,
                 scrollwheel: false
                 });
-
                 var pu_icon = {
                       url: "http://maps.google.com/mapfiles/ms/icons/green.png",
                       size: new google.maps.Size(71, 71),
@@ -249,7 +251,6 @@
                       anchor: new google.maps.Point(17, 34),
                       scaledSize: new google.maps.Size(30, 30)
                     };
-
                 var do_icon = {
                       url: "http://maps.google.com/mapfiles/ms/icons/red.png",
                       size: new google.maps.Size(71, 71),
@@ -257,7 +258,6 @@
                       anchor: new google.maps.Point(17, 34),
                       scaledSize: new google.maps.Size(30, 30)
                     };
-
                     // Create a marker for each place.
                 var pu_marker = new google.maps.Marker({
                   map: map,
@@ -265,21 +265,16 @@
                   title: "Pickup Location",
                   position: puLongLat
                 });
-
                 var do_marker = new google.maps.Marker({
                     map: map,
                     icon: do_icon,
                     title: "Drop Off Location",
                     position: doLongLat
                 });
-
                 markers = [pu_marker, do_marker];
-
-
                 for (var c = 0; c < markers.length; c++) {
                  bounds.extend(markers[c].getPosition());
                 }
-
                 map.fitBounds(bounds);
             }
         }
