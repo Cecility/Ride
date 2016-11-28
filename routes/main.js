@@ -35,7 +35,7 @@ exports.view = function(req, res, next) {
 	                }
 	            }
 
-				res.render('main', { userprofile: data , dbdrive: dbdrivedata, dbuser: dbuserdata, userprofile2: data2 });
+				res.render('main', { userprofile: data , dbdrive: dbdrivedata, dbuser: dbuserdata, userprofile2: data2, userid: uid });
 			});
 		});
 	}

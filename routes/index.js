@@ -52,7 +52,7 @@ exports.create = function(req, res, next){
 		}
 
 		else{
-            console.log('User exists. WE checked in controller');
+            console.log('User exists. We checked in controller');
 			res.sendStatus(200);
 		}
 

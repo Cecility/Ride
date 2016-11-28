@@ -58,7 +58,7 @@
                                 <a href="main"><span class="glyphicon glyphicon-user"></span>My Groups</a>
                             </li>
                             <li class="active">
-                                <a href="discovery"><span class="glyphicon glyphicon-globe"></span>Discovery</a>
+                                <a href="discovery"><span class="glyphicon glyphicon-globe"></span>Find a Ride</a>
                             </li>
                         </ul>
                     </div>
@@ -158,7 +158,7 @@
         function initAutocomplete(){
             var dbdrive = <%- JSON.stringify(dbdrive) %>;
             var bounds = new google.maps.LatLngBounds();
-            var markers = [];
+            var puLongLat, doLongLat;
             for(i=0; i<dbdrive.length; i++){
 
                 var map = new google.maps.Map(document.getElementById(i), {
@@ -184,10 +184,10 @@
                       scaledSize: new google.maps.Size(30, 30)
                     };
 
-                var puLongLat = {lat: parseFloat(dbdrive[i].pickupLat), lng: parseFloat(dbdrive[i].pickupLong)};
+                puLongLat = {lat: parseFloat(dbdrive[i].pickupLat), lng: parseFloat(dbdrive[i].pickupLong)};
 
 
-                var doLongLat = {lat: parseFloat(dbdrive[i].dropoffLat), lng: parseFloat(dbdrive[i].dropoffLong)};
+                doLongLat = {lat: parseFloat(dbdrive[i].dropoffLat), lng: parseFloat(dbdrive[i].dropoffLong)};
 
                     // Create a marker for each place.
                 var pu_marker = new google.maps.Marker({
@@ -204,7 +204,7 @@
                     position: doLongLat
                 });
 
-                markers = [pu_marker, do_marker];
+                var markers = [pu_marker, do_marker];
 
 
                 for (var c = 0; c < markers.length; c++) {
@@ -217,5 +217,8 @@
     </script>
     <!-- Google Map Api-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm_HyYv53RLUIrqJICXV736xFbliLqSVA&libraries=places&callback=initAutocomplete" async defer></script>
+    
+    <!-- Logout Listener -->
+    <script src="../js/logout.js"></script>
 
 </html>

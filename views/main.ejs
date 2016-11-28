@@ -62,7 +62,7 @@
 
 				<!-- SIDEBAR BUTTONS -->
 				<div class="profile-userbuttons">
-					<button type="button" class="btn btn-danger btn-sm">Logout</button>
+					<button type="button" class="btn btn-danger btn-sm" id="log-out-btn">Logout</button>
 				</div>
 				<!-- END SIDEBAR BUTTONS -->
 
@@ -73,7 +73,7 @@
 							<a href="main"><span class="glyphicon glyphicon-user"></span>My Groups</a>
 						</li>
 						<li>
-							<a href="discovery"><span class="glyphicon glyphicon-globe"></span>Discovery</a>
+							<a href="discovery"><span class="glyphicon glyphicon-globe"></span>Find a Ride</a>
 						</li>
 					</ul>
 				</div>
@@ -177,7 +177,8 @@
         function initAutocomplete(){
             var dbuser = <%- JSON.stringify(dbuser) %>;
             var dbdrive = <%- JSON.stringify(dbdrive) %>;
-                        
+            var userid = <%- JSON.stringify(userid) %>;
+            
             var bounds = new google.maps.LatLngBounds();
             var markers = [];
             var puLongLat, doLongLat;
@@ -185,7 +186,7 @@
             
             // Searching for Current user index location in user database
             for(var i = 0; i < dbuser.length; i++){
-                if(dbuser[i]._id == "582552e6dcba0f326cc71a6e"){
+                if(dbuser[i]._id == userid){
                     cu = i;
                 }
             }
@@ -202,8 +203,6 @@
                         
                         // Get the dropoff location lng and lat
                         doLongLat = {lat: parseFloat(dbdrive[j].dropoffLat), lng: parseFloat(dbdrive[j].dropoffLong)};
-                    }
-                }
                 var map = new google.maps.Map(document.getElementById(i), {
                 zoom: 15,
                 mapTypeId: 'roadmap',
@@ -217,6 +216,7 @@
                       anchor: new google.maps.Point(17, 34),
                       scaledSize: new google.maps.Size(30, 30)
                     };
+                
                 var do_icon = {
                       url: "http://maps.google.com/mapfiles/ms/icons/red.png",
                       size: new google.maps.Size(71, 71),
@@ -241,12 +241,19 @@
                 for (var c = 0; c < markers.length; c++) {
                  bounds.extend(markers[c].getPosition());
                 }
+                console.log('the bounds for map ' + i +' is '+ bounds);
                 map.fitBounds(bounds);
+                }
+              }
             }
         }
     </script>
     <!-- Google Map Api-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm_HyYv53RLUIrqJICXV736xFbliLqSVA&libraries=places&callback=initAutocomplete" async defer></script>
+    
+    <!-- Logout Listener -->
+    <script src="../js/logout.js"></script>
+
 
 
 </html>
