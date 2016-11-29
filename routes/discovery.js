@@ -4,7 +4,7 @@ var sess;
 exports.view = function(req, res, next) {
     sess = req.session;
     
-	data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+	//data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
 	// console.log(data)
 	// console.log('in');
 

@@ -86,7 +86,8 @@
                     <h1 align="center"> Sign up for rides! </h1>
 
                 <% var counter = 0;
-                for(var i = 0; i < dbdrive.length; i++ ){ %>
+                for(var i = 0; i < dbdrive.length; i++ ){
+                    if( dbdrive[i].username != userprofile.username ){ %>
 
                     <div id="discover-post-container"> 
                         <div class="map-container">
@@ -168,7 +169,7 @@
                         </form>
                     </div>
                     <hr>
-                    <% } %>
+                    <% }} %>
 
                 </div>
             </div>
