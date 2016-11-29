@@ -27,6 +27,18 @@
 <!-- THIS IS ALSO THE MY GROUPS PAGE! -->
 
     <body>
+    <% if (messages.length>0) {%> 
+    <div class="row" id="flash-message"><h4 id="message"><%=messages%></h4></div>
+
+    <script>
+        var message = <%-JSON.stringify(messages)%>;
+        if(message[0].length == 20)
+            $('#flash-message').css("background-color", "gray");
+        else
+            $('#flash-message').css("background-color", "#00b200");
+     
+    </script>
+    <%}%>
     <div class="container">
         <div class="row profile">
             <div class="col-md-3">

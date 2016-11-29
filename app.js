@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var flash = require('connect-flash');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -44,6 +45,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({secret:'1321corgis'}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash());
 
 //app.use('/', routes);
 app.get('/', index.view);
@@ -53,9 +55,6 @@ app.get('/discovery', discovery.view);
 app.get('/discoveryA', discovery.view2);
 app.get('/settings', settings.view);
 app.get('/addGroup', addGroup.view);
-
-
-
 
 app.post('/addGroup', addGroup.create);
 app.post('/login', index.create);

@@ -153,6 +153,11 @@ form{
     background: #2e2728;
 }
 
+#flash-message{
+    width: 100%;
+    text-align: center;
+    color: white;
+}
 
 
 

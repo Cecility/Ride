@@ -42,6 +42,13 @@
 <!-- THIS IS ALSO THE MY GROUPS PAGE! -->
 
 <body>
+    <% if (messages.length>0) {%> 
+    <div class="row" id="flash-message"><h4><%=messages%></h4></div>
+    <script>
+        $('#flash-message').css("background-color", "#00b200")
+        $('#flash-message').delay(2000).fadeOut(1000);
+    </script>
+    <%}%>
 <div class="container">
     <div class="row profile">
 		<div class="col-md-3">
@@ -148,7 +155,7 @@
 	        	    		    	<% } %>
 	        	        		</li>
                 
-                        <form action="/main/leaveGroup" method="post">
+                        <form id="leaveGroup" action="/main/leaveGroup" method="post">
                             <lable>
                                 <input type="text" id="groupId-form" name="groupId" value="<%=dbdrive[i]._id%>">
                             </lable>
@@ -263,7 +270,5 @@
     
     <!-- Logout Listener -->
     <script src="../js/logout.js"></script>
-
-
 
 </html>

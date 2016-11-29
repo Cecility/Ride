@@ -35,7 +35,7 @@ exports.view = function(req, res, next) {
 	                }
 	            }
 
-				res.render('main', { userprofile: data , dbdrive: dbdrivedata, dbuser: dbuserdata, userprofile2: data2, userid: uid });
+				res.render('main', { userprofile: data , dbdrive: dbdrivedata, dbuser: dbuserdata, userprofile2: data2, userid: uid, messages:req.flash('leaveGroupRes')});
 			});
 		});
 	}
@@ -128,6 +128,7 @@ exports.leaveGroup = function (req, res){
                 res.send(500);
             }
             else
+                req.flash('leaveGroupRes', 'Successful left group.');
                 res.redirect('/main');
         }
     });

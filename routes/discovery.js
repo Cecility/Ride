@@ -33,7 +33,7 @@ exports.view = function(req, res, next) {
             
             console.log("data is " + data);
             
-            res.render('discovery', { userprofile: data , dbdrive: dbdrivedata, dbuser: dbuserdata });
+            res.render('discovery', { userprofile: data , dbdrive: dbdrivedata, dbuser: dbuserdata, messages:req.flash('joinGroupMsg') });
 		});
 	});
 };
@@ -126,12 +126,16 @@ exports.create = function (req, res){
             if(currGroupId.indexOf(groupId) == -1){
                 // add user to the group
                 currGroupId[currGroupId.length] = groupId;
+                req.flash('joinGroupMsg', 'Successfully joined group');
                 console.log("GroupId to be uploaded " + currGroupId);
             }
             
             // else user already in the goup. Do nothing
-            else
+            else{
+                req.flash('joinGroupMsg', 'Already in the group');
                 console.log(groupId + " already exist");
+                afterUpdating;
+            }
         
         
             models.user.find({'_id': userId}).update({"groups": currGroupId}).exec(afterUpdating);
