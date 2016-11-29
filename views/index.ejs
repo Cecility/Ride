@@ -103,49 +103,22 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
             // The signed-in user info.
             username = currentUser.displayName;
 
-                
+            picUrl = currentUser.photoURL;
             useremail = currentUser.email;
                 
             uid = currentUser.uid;
-                
 
                 
             // Assign null for photo url if user does not have photo   
-            if(currentUser.photoUrl != undefined)   
+            if(picUrl.length != 0)   
                 picUrl  = currentUser.photoUrl;
             else 
                 picUrl = "https://ih1.redbubble.net/image.13322831.6235/flat,220x200,075,t.u3.jpg";
-            domain = useremail.substring(0,useremail.lastIndexOf("@"));
-                
-            console.log("User name is " + currentUser.displayName);    
-            console.log("user mail is " + useremail);
-            console.log("userpicUrl is " + picUrl);
-            console.log("user id is " + uid);
-            console.log("domain is " + domain);
-                
-                
-            firebase.database().ref("users").once('value', function(snapshot){
-              if(!snapshot.hasChild(domain)){
-                  firebase.database().ref("users/" + domain).set({
-                      name: username,
-                      email:useremail,
-                      profile_picture: picUrl
-                  });
-                  console.log("user created");
-                  //window.location.href = "main";
-              }
-              else{
-                  console.log("user exists");
-                  //window.location.href = "main";
-              }
 
-              $.post('/login', 
+            $.post('/login', 
                      {username: username, email: useremail, picture: picUrl}, function(data, status, xhr){
                           window.location.href = "main";
                       });
-
-          });
-                 
                 
           }
         });

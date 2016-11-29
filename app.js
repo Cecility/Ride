@@ -61,8 +61,6 @@ app.post('/login', index.create);
 app.post('/discovery/joinGroup', discovery.create);
 app.post('/main/leaveGroup', main.leaveGroup);
 app.post('/logout', function(req, res){
-    var sess = req.session;
-    sess.destroy();
     res.send(304);
 });
 // app.post('/index/login', index.create);
