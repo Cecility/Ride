@@ -43,12 +43,21 @@
 
 <body>
     <% if (messages) {%> 
-    <div class="row" id="flash-message"><h4><%=messages%></h4></div>
-    <script>
-        $('#flash-message').css("background-color", "#00b200")
-        $('#flash-message').delay(2000).fadeOut(1000);
-    </script>
+        <div class="row" id="flash-message"><h4><%=messages%></h4></div>
+        <script>
+            $('#flash-message').css("background-color", "#00b200")
+            $('#flash-message').delay(2000).fadeOut(1000);
+        </script>
     <%}%>
+    <% console.log(addSuccess);%>
+    <% if(addSuccess){ %>
+        <div class="row" id="flash-message"><h4><%=addSuccess%></h4></div>
+        <script>
+            $('#flash-message').css("background-color", "#00b200")
+            $('#flash-message').delay(2000).fadeOut(1000);
+        </script>
+    <%}%>
+    
 <div class="container">
     <div class="row profile">
 		<div class="col-md-3">

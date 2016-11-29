@@ -165,15 +165,10 @@
                     pickupLat: puLat,
                     dropoff: doaddr,
                     dropoffLong: doLong,
-                    dropoffLat: doLat});
-
-                    location.href = "http://rideordrive.herokuapp.com/main"
-                  
+                    dropoffLat: doLat}, function(){
+                        window.location.href = '/main';
+                    });
                 }
-
-
-
-
 
 
             })  

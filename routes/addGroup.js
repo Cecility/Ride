@@ -24,16 +24,17 @@ exports.create = function(req, res){
 	});
 
 
-	console.log(req.body);
+	console.log(sess.username);
 
 	newDrive.save(afterSaving);
 
 
-	function afterSaving(err){ // this is a callback
+    function afterSaving(err){ // this is a callback
 		if(err) {
 			console.log(err); res.send(500);
 		}
-
-		res.redirect('/main'); // redirect to main page if create successfully
+        
+        sess.addSuccess = "Ride group created sucessfully. You can see it in Find a Ride";
+		res.sendStatus(304); // redirect to main page if create successfully
 	}
 }
