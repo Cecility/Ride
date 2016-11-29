@@ -7,14 +7,15 @@ exports.view = function(req, res, next) {
 var sess;
 exports.create = function(req, res, next){
 
-            console.log("called create");
+    console.log("called create");
     
 	sess = req.session;
 	sess.loggedin = "1";
 	sess.username = req.body.username;
 	sess.email = req.body.email;
 	sess.pic = req.body.pic;
-
+    
+    console.log(req.body.pic);
 
 	models.user.find({}, function(err, userData){
 		if (err){
