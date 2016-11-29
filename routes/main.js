@@ -93,8 +93,8 @@ exports.leaveGroup = function (req, res){
     var sess = req.session;
     var groupId = req.body.groupId; // Get id of group to be removed
     var uid = sess.uid; // Get unique id of current user
-    var rmIndex;
-    var currGroupId =[];
+    var rmIndex; // Index of group to be removed
+    var currGroupId =[]; // Holder for user's current groups
     
     // Find data of current user by unique id on MongoDb
     models.user.find({'_id':uid}, function(err, userData){
@@ -106,19 +106,12 @@ exports.leaveGroup = function (req, res){
             }
 
             // Finding index of groupId to be removed from user's database
-            rmIndex = currGroupId.indexOf(groupId);
-
-            // DEBUG STATEMENTS DELETE WHEN DONE
-            console.log('OLD user belongs to group ' + JSON.stringify(currGroupId));
-            console.log('Group to be removed is ' + groupId);
-            console.log('Removing group at index ' + rmIndex);            
+            rmIndex = currGroupId.indexOf(groupId);          
 
             // Removing Group
             currGroupId.splice(rmIndex, 1);
             
-            // DEBUG STATEMENT. DELETE WHEN DONE
-            console.log('NEW user belongs to group ' + JSON.stringify(currGroupId));
-            
+            // Updating Mongo Database
             models.user.find({'_id':uid}).update({'groups':currGroupId}).exec(afterDelete);
         }
         
