@@ -68,7 +68,7 @@ exports.create = function(req, res, next){
             models.user.find({}, function(err, userData){
                 for(var i = 0; i < userData.length; i++){
                     if(userData[i].email == sess.email){
-                        sess.uid = userData[i]._id.$oid;
+                        sess.uid = userData[i]._id;
                         console.log('user id is '+ userData[i]._id + ' sees.uid is '+ sess.uid);
                     }
 		        }
