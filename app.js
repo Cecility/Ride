@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var flash = require('connect-flash');
+var flash = require('express-flash');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -44,8 +44,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({secret:'1321corgis'}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
+app.use(express.static(path.join(__dirname, 'public')));
 
 //app.use('/', routes);
 app.get('/', index.view);
