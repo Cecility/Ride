@@ -129,10 +129,19 @@
 									</div>
 								</div>
 
+                                
+                                <% for(var c = 0; c < dbdrive[i].dates.length; c++){
+                                    if(dbdrive[i].dates[c] == 1){
+                                        counter = counter + 1;
+                                    }
+                                }
+                                %>
+
 	        	       			<li> Leaving at: <%= dbdrive[i].time %> </li>
 	        	       			<li> Pick Up: <%= dbdrive[i].pickup %> </li>
 			        	       	<li> Drop Off: <%= dbdrive[i].dropoff %> </li>
-	        			     	<li> Rides on:                                    <% if(dbdrive[i].dates[0] == 1){ 
+	        			     	<li> Rides on:
+                                    <% if(dbdrive[i].dates[0] == 1){ 
                                         --counter %>
                                         Mon
                                     <%  if(counter > 0){ %>
