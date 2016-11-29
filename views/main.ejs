@@ -111,7 +111,8 @@
 
             	<!-- go through the whole ride database
             		if user's id == id of a rider...-->
-	            <% for(var h = 0; h < dbuser[cu].groups.length; h++ ){ 
+	            <% var counter = 0;
+                for(var h = 0; h < dbuser[cu].groups.length; h++ ){ 
 	            	for(var i = 0; i < dbdrive.length; i++ ){ 
 	    	        	if(dbuser[cu].groups[h] == dbdrive[i]._id){
 	    	        		if(dbuser[cu].username != dbdrive[i].username){ %>
@@ -131,29 +132,52 @@
 	        	       			<li> Leaving at: <%= dbdrive[i].time %> </li>
 	        	       			<li> Pick Up: <%= dbdrive[i].pickup %> </li>
 			        	       	<li> Drop Off: <%= dbdrive[i].dropoff %> </li>
-	        			     	<li> Rides on: 
-	        	    		    	<% if(dbdrive[i].dates[0] == 1){ %>
-			        	        		Mon, 
-	        			        	<% } %>
-	        	    		    	<% if(dbdrive[i].dates[1] == 1){ %>
-	        	        				Tue, 
-			        	        	<% } %>
-	        			        	<% if(dbdrive[i].dates[2] == 1){ %>
-	        	    		    		Wed, 
-	        	        			<% } %>
-			        	        	<% if(dbdrive[i].dates[3] == 1){ %>
-	        			        		Thu, 
-	        	    		    	<% } %>
-	        	        			<% if(dbdrive[i].dates[4] == 1){ %>
-	        	        				Fri, 
-	 			       	        	<% } %>
-	        			        	<% if(dbdrive[i].dates[5] == 1){ %>
-	        	        				Sat, 
-	        	        			<% } %>
-			        	        	<% if(dbdrive[i].dates[6] == 1){ %>
-	        			        		Sun
-	        	    		    	<% } %>
-	        	        		</li>
+	        			     	<li> Rides on:                                    <% if(dbdrive[i].dates[0] == 1){ 
+                                        --counter %>
+                                        Mon
+                                    <%  if(counter > 0){ %>
+                                            , 
+                                    <% }} %>
+
+                                    <% if(dbdrive[i].dates[1] == 1){
+                                        --counter %>
+                                        Tue
+                                    <%  if(counter > 0){ %>
+                                            , 
+                                    <% }} %>
+
+                                    <% if(dbdrive[i].dates[2] == 1){ 
+                                        --counter; %>
+                                        Wed
+                                    <%  if(counter > 0){ %>
+                                            , 
+                                    <% }} %>
+
+                                    <% if(dbdrive[i].dates[3] == 1){ 
+                                        --counter; %>
+                                        Thu
+                                    <%  if(counter > 0){ %>
+                                            , 
+                                    <% }} %>
+
+                                    <% if(dbdrive[i].dates[4] == 1){
+                                        --counter; %>
+                                        Fri
+                                    <%  if(counter > 0){ %>
+                                            , 
+                                    <% }} %>
+
+                                    <% if(dbdrive[i].dates[5] == 1){ 
+                                        --counter;%>
+                                        Sat
+                                    <%  if(counter > 0){ %>
+                                            , 
+                                    <% }} %>
+                                    
+                                    <% if(dbdrive[i].dates[6] == 1){ %>
+                                        Sun
+                                    <% } %>
+                                </li>
                 
                         <form id="leaveGroup" action="/main/leaveGroup" method="post">
                             <lable>
