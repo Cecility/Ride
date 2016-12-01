@@ -88,7 +88,8 @@
                     <h1 align="center"> Sign up for rides! </h1>
 
                 <% var counter = 0;
-                for(var i = 0; i < dbdrive.length; i++ ){ %>
+                for(var i = 0; i < dbdrive.length; i++ ){
+                    if(dbdrive[i].email != userprofile.email){%>
 
                     <div id="discover-post-container"> 
                         <div class="map-container">
@@ -104,6 +105,7 @@
                         <li> Leaving at: <%= dbdrive[i].time %> </li>
                         <li> Pick Up: <%= dbdrive[i].pickup %> </li>
                         <li> Drop Off: <%= dbdrive[i].dropoff %> </li>
+
 
                         <% for(var c = 0; c < dbdrive[i].dates.length; c++){
                             if(dbdrive[i].dates[c] == 1){
@@ -170,7 +172,7 @@
                         </form>
                     </div>
                     <hr>
-                    <% } %>
+                    <% }} %>
 
                 </div>
             </div>
