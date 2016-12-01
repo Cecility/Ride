@@ -34,8 +34,10 @@
         var message = <%-JSON.stringify(messages)%>;
         if(message[0].length == 20)
             $('#flash-message').css("background-color", "gray");
+            $('#flash-message').delay(2000).fadeOut(1000);
         else
             $('#flash-message').css("background-color", "#00b200");
+            $('#flash-message').delay(2000).fadeOut(1000);
      
     </script>
     <%}%>
